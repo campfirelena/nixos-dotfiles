@@ -2,8 +2,9 @@
 
 {
   imports = [
-    ./spicetify
+    #./spicetify
     ./steam
+    ./nvim/default.nix
   ];
   home.username = "elena";
   home.homeDirectory = "/home/elena";
