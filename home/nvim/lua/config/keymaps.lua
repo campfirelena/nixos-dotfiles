@@ -1,12 +1,8 @@
-local function map(mode, one, two, fcn)
-	if not key.active[keys.parse({ one, mode = mode }).id] then
-		fcn = fcn or {}
-		fcn.silent = fcn.silent ~= false
-		vim.keymap.set(mode, one, two, fcn)
-	end
+local function map(mode, lhs, rhs, opts)
+	opts = opts or {}
+	vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 vim.g.mapleader = " "
 
-map("n" "<leader>pv" ":Ex")
-
+map("n", "<leader>pv", vim.cmd.Ex) 
