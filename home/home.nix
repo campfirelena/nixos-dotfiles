@@ -16,7 +16,6 @@
     unzip
     rustup
     gcc
-    vifm
     gtk3
     gtk4
 
@@ -29,12 +28,9 @@
   
   # Optional Stuff
     fastfetch
-    sway-contrib.grimshot #move to wayland setup
     keepassxc
     python3
-    xflux-gui
     flameshot
-    autokey
 
   # GAMIG
     steam
@@ -65,6 +61,6 @@
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;
   
-  home.stateVersion = "23.11"; #DO NOT CHANGE, YOU NEED TO MANUALLY CHANGE DEFAULTS
+  home.stateVersion = "24.05"; #SET TO SPECIFIC ISO VERSION
 
 }

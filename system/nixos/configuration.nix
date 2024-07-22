@@ -8,16 +8,6 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.systemd-boot.extraEntries = {
-    "nvidiafix.conf" = ''
-      title Nvidiafix
-      options nvidia_drm.modeset=1
-      options nvidia_drm.fbdev=0
-    ''; #hopefully this fixes frame buffer issues
-  };
-  boot.extraModprobeConfig = ''
-    options nvidia_drm modeset=1 fbdev=0
-  '';
 
   # Use Flakes
   nix = {
@@ -81,9 +71,7 @@
   environment.systemPackages = with pkgs; [
     neovim
     git
-    gh
     curl
-    home-manager
     autorandr
   ];
 
@@ -112,8 +100,8 @@
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
-  # Don't change this. Like ever.
-  system.stateVersion = "23.11";
+  # Only change when different iso version used
+  system.stateVersion = "24.05";
   
   # Setting up system-wide programs 
   programs.dconf.enable = true;
