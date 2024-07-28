@@ -19,4 +19,3 @@ require("nvim-tree").setup({
 vim.g.loaded_netrw = false
 vim.g.loaded_netrwPlugin = false
 
-
