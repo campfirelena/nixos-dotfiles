@@ -3,7 +3,6 @@
 {
   imports = [
     #./spicetify
-    ./steam
     ./nvim/default.nix
   ];
   home.username = "elena";
@@ -19,6 +18,7 @@
     gcc
     gtk3
     gtk4
+    usbutils
 
   # WM Stuff
     nwg-displays
@@ -34,12 +34,10 @@
     flameshot
 
   # GAMIG
-    steam
     prismlauncher
-    glxinfo
     r2modman
-    gamemode
-    gamescope
+    piper
+    libratbag
 
     ] ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
       # UNSTABLE

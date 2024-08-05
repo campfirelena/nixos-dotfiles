@@ -3,6 +3,8 @@
 { 
   imports =[
     ./hardware-configuration.nix
+    ./steam
+    ./xorg
   ];
 
   # Use the systemd-boot EFI boot loader.
