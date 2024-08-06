@@ -37,8 +37,6 @@
   # GAMIG
     prismlauncher
     r2modman
-    piper
-    libratbag
 
     ] ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
       # UNSTABLE
