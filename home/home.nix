@@ -4,6 +4,7 @@
   imports = [
     #./spicetify
     ./nvim/default.nix
+    ./awesome/default.nix
   ];
   home.username = "elena";
   home.homeDirectory = "/home/elena";
