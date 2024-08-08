@@ -2,7 +2,7 @@
 
 {
   imports = [
-    #./spicetify
+    ./spicetify
     ./nvim/default.nix
     ./awesome/default.nix
   ];

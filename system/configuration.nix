@@ -75,7 +75,6 @@
     git
     curl
     autorandr
-    libratbag
     piper
   ];
 
@@ -127,4 +126,5 @@
   };
  
   services.xserver.windowManager.awesome.enable = true;
+  services.ratbagd.enable = true;
 }
