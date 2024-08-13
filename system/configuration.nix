@@ -127,4 +127,7 @@
  
   services.xserver.windowManager.awesome.enable = true;
   services.ratbagd.enable = true;
+  environment.variables = {
+    XDG_DATA_HOME = "$HOME/.data/";
+    };
 }

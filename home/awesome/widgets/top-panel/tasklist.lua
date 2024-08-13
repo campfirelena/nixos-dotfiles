@@ -1,5 +1,6 @@
 local awful = require("awful")
 local gears = require("gears")
+local wibox = require("wibox")
 
 local tasklist_buttons = gears.table.join(
   awful.button({ }, 1, function (c)
@@ -31,4 +32,21 @@ awful.screen.connect_for_each_screen(function(s)
       filter  = awful.widget.tasklist.filter.currenttags,
       buttons = tasklist_buttons
     }
-end)
+    s.tasklist = wibox.widget {
+      {
+        {
+          widget = awful.widget.tasklist {
+            screen = s,
+            filter = awful.widget.tasklist.filter.currenttags,
+            buttons = tasklist_buttons
+          }
+        },
+        bg = "#ffffff",
+        shape = gears.shape.rounded_rect,
+        widget = wibox.container.background
+      },
+      height = 10,
+      width = 300,
+      layout = wibox.layout.constraint
+    }
+  end)
