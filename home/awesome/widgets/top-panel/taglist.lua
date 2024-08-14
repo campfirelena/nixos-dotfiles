@@ -23,6 +23,7 @@ awful.screen.connect_for_each_screen(function(s)
       filter  = awful.widget.taglist.filter.all,
       buttons = taglist_buttons,
       shape = gears.shape.rounded_rect,
+      style = {}
     }
 
 end)

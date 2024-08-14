@@ -3,7 +3,7 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 local gfs = require("gears.filesystem")
-local themes_path = "/home/elena/.config/awesome/themes/default/"
+local themes_path = "~/.config/awesome/themes/default/"
 
 local theme = {}
 
