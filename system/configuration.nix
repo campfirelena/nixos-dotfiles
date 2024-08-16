@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./steam
     ./xorg
+    ./rivalcfg
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -75,7 +76,6 @@
     git
     curl
     autorandr
-    piper
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -126,8 +126,4 @@
   };
  
   services.xserver.windowManager.awesome.enable = true;
-  services.ratbagd.enable = true;
-  environment.variables = {
-    XDG_DATA_HOME = "$HOME/.data/";
-    };
 }
