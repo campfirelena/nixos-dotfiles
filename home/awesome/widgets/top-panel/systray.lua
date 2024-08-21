@@ -54,7 +54,7 @@ local function make_popup()
 end
 
 systray:connect_signal("mouse::enter", function()
-  my_systray.set_screen("primary")
+  my_systray.set_screen(awful.screen.focused())
   --naughty.notify({ text = tostring(awful.screen.focused())})
 end)
 
