@@ -36,15 +36,20 @@ local TopPanel = function(s)
     {
       layout = wibox.layout.fixed.horizontal,
       launcherboxed,
+      spacer(10),
       s.mytasklist,
+      spacer(10),
       s.mypromptbox,
     },
     s.mytaglist,
     {
       layout = wibox.layout.fixed.horizontal,
       systray,
+      spacer(10),
       spotify_widget(),
+      spacer(10),
       mytextclock,
+      spacer(10),
     },
   }
 
