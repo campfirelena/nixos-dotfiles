@@ -5,6 +5,9 @@ local client_buttons = require('configuration.client.buttons')
 local title_bars = require('configuration.client.titlebars')
 local beautiful = require("beautiful")
 
+client.connect_signal("manage", function(c)
+  c.shape = gears.shape.rounded_rect
+end)
 -- {{{ Rules
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
