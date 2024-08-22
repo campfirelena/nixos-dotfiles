@@ -106,8 +106,8 @@ local function worker(user_args)
   local function update_widget_icon(widget, status)
     status:gsub("[\n\r+]","")
     widget:set_status(status == '▮▮' and true or false)
-    if not status:gmatch("Spotify") then
-      running = true
+    if status:gmatch("Spotify") then
+      running = false
     end
   end
 
@@ -137,7 +137,8 @@ local function worker(user_args)
     if (button == 1) then
       awful.spawn(PLAY_PAUSE_CMD, false)      -- left click
       if not running then
-        awful.spawn("bash -c spotify") 
+        awful.spawn("bash -c spotify")
+        running = true
       end
     elseif (button == 4) then
       awful.spawn(NEXT_SONG_CMD, false)       -- scroll down

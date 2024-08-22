@@ -33,6 +33,8 @@
     keepassxc
     python3
     flameshot
+    xclip
+    kanata
 
   # GAMIG
     prismlauncher

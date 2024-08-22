@@ -64,14 +64,68 @@ awful.widget.watch(STATUS_CMD, timeout, function(widget,stdout)
 end)
 
 volume_widget = wibox.widget {
-	{
-	{
-	image = ICON,
-	widget = wibox.widget.imagebox
-	},
-	valign = 'center',
-	layout = wibox.container.place,
-},
+  {
+    id = "text",
+    text = "Volume",
+    widget = wibox.widget.textbox,
+  },
+  layout = wibox.layout.fixed.horizontal,
 }
+
+local volume_widget_content = wibox.widget {
+  {
+    widget = wibox.widget.slider,
+    handle_shape = gears.shape.rectangle,
+    handle_width = 2,
+    handle_color = "#FFFFFF",
+    bar_shape = gears.shape.rounded_bar,
+    bar_color = "#151515",
+    bar_height = 2,
+  },
+  {
+    id = "other text",
+    text = "popup content",
+    widget = wibox.widget.textbox,
+  },
+  layout = wibox.layout.fixed.horizontal,
+}
+
+local function make_popup(title, content, parent)
+  local popup_widget = awful.popup {
+    widget = {
+      {
+        {
+          text = title,
+          widget = wibox.widget.textbox
+        },
+        content,
+        layout = wibox.layout.fixed.vertical,
+      },
+      margins = 10,
+      widget = wibox.container.margin
+    },
+    placement = {},
+    ontop = true,
+    visible = false,
+    parent = parent
+  }
+  return popup_widget
+end
+
+local volume_popup = make_popup("Volume", volume_widget_content, volume_widget)
+
+volume_widget:buttons(
+  gears.table.join(
+    awful.button({}, 1, function()
+      awful.placement.next_to(volume_popup,
+        {
+          preferred_positions = { "bottom" },
+          preferred_anchors = { "back" },
+        }
+      )
+      volume_popup.visible = not volume_popup.visible
+    end)
+    )
+  )
 
 return volume_widget

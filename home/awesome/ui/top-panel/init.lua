@@ -32,19 +32,44 @@ local TopPanel = function(s)
   })
 
   panel:setup {
-    layout = wibox.layout.align.horizontal,
+    layout = wibox.layout.flex.horizontal,
     {
+      widget = wibox.container.place,
+      width = 200,
+      halign = "left",
+      valign = "center",
+      {
       layout = wibox.layout.fixed.horizontal,
       launcherboxed,
+      spacer(10),
       s.mytasklist,
+      spacer(10),
       s.mypromptbox,
     },
-    s.mytaglist,
+    },
     {
+      widget = wibox.container.place,
+      width = 200,
+      halign = "center",
+      valign = "center",
+      {
+      layout = wibox.layout.fixed.horizontal,
+    s.mytaglist,
+  },
+},
+    {
+      widget = wibox.container.place,
+      width = 200,
+      halign = "right",
+      valign = "center",
+      {
       layout = wibox.layout.fixed.horizontal,
       systray,
+      spacer(10),
       spotify_widget(),
+      spacer(10),
       mytextclock,
+    },
     },
   }
 
