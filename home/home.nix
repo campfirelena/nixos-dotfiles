@@ -20,6 +20,7 @@
     gtk3
     gtk4
     usbutils
+    glxinfo
 
   # WM Stuff
     nwg-displays
@@ -39,6 +40,7 @@
   # GAMIG
     prismlauncher
     r2modman
+    jdk17
 
     ] ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
       # UNSTABLE

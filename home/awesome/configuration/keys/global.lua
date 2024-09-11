@@ -20,6 +20,10 @@ globalKeys = gears.table.join(
   awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
     {description = "view next", group = "tag"}),
 
+  awful.key({ modkey, "Shift" }, "s", function()
+    awful.spawn("kitty -e flameshot gui", {floating = true})
+  end,
+  {description = "take screenshot with flameshot", group = "client"}),
   awful.key({ modkey, "Shift" }, "Left",
     function ()
       -- get current tag
