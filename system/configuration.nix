@@ -76,7 +76,7 @@
     git
     curl
     autorandr
-  ];
+  ] ++ [inputs.zen-browser.packages."${system}".generic];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -126,4 +126,5 @@
   };
  
   services.xserver.windowManager.awesome.enable = true;
+  services.logmein-hamachi.enable = true;
 }

@@ -12,6 +12,9 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    zen-browser = {
+      url = "github:MarceColl/zen-browser-flake";
+    };
   };
 
   outputs = inputs: {

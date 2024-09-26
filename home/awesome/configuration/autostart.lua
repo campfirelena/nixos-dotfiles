@@ -14,7 +14,8 @@ return {
 
 	-- Add applications that need to be killed between reloads
     -- to avoid multipled instances, inside the awspawn script
-    '~/.config/awesome/configuration/autostartonce.sh' -- Spawn "dirty" apps that can linger between sessions
+    '~/.config/awesome/configuration/autostartonce.sh', -- Spawn "dirty" apps that can linger between sessions
+    "flameshot",
 
   }
 }

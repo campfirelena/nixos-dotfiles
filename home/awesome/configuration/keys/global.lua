@@ -21,7 +21,7 @@ globalKeys = gears.table.join(
     {description = "view next", group = "tag"}),
 
   awful.key({ modkey, "Shift" }, "s", function()
-    awful.spawn("kitty -e flameshot gui", {floating = true})
+    awful.spawn("flameshot gui --clipboard", {floating = true})
   end,
   {description = "take screenshot with flameshot", group = "client"}),
   awful.key({ modkey, "Shift" }, "Left",
