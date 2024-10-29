@@ -70,6 +70,31 @@ awful.rules.rules = {
 	{ rule = { class = "Spicetify" },
 		properties = { screen = 2, tag = "3", floating = false, maximised = false } },
 
+    { -- General plasma rules
+    rule_any = {
+        class = {
+            "plasmashell",
+            "ksmserver-logout-greeter",
+        },
+    },
+    properties = {
+        floating = true,
+        border_width = 0,
+        titlebars = false, -- custom property to control titlebars
+    },
+
+},
+{ -- KDE apps
+    rule_any = {
+        class = {
+            "spectacle",
+            "krunner"
+        }
+    },
+    properties = {
+        floating = true,
+    }
+},
 
 }
 -- }}}
