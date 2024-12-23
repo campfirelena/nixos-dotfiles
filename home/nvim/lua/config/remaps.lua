@@ -29,7 +29,7 @@ function my_on_attach(bufnr)
 
   -- custom mappings
   vim.keymap.set('n', 'n', api.fs.create, opts('New File or Directory (use \\ for directory)'))
-  vim.keymap.set('n', '?',     api.tree.toggle_help, opts('Help'))
+  vim.keymap.set('n', '?', api.tree.toggle_help, opts('Help'))
   vim.keymap.set('n', 'p', api.fs.paste, opts('Paste file'))
   vim.keymap.set('n', 'y', api.fs.copy.node, opts('Copy file'))
 end
