@@ -100,7 +100,6 @@
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
   networking.firewall.enable = false;
 
   # Only change when different iso version used
@@ -125,6 +124,5 @@
     driSupport32Bit = true;
   };
  
-  services.xserver.windowManager.awesome.enable = true;
   services.logmein-hamachi.enable = true;
 }
