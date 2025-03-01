@@ -1,41 +1,29 @@
-{ inputs, config, pkgs, lib, ... }:
+{ inputs, pkgs, username, homeDirectory, ... }:
 
 {
   imports = [
-    ./spicetify
+    #./spicetify
     ./nvim/default.nix
-    ./awesome/default.nix
+    #./awesome/default.nix
   ];
   home.username = "elena";
   home.homeDirectory = "/home/elena";
+
+  nvim.enable = true;
+
   home.packages = with pkgs; [
   # Essentials
-    floorp
-    networkmanager
+    firefox
     btop
     nerdfonts
     unzip
-    rustup
-    gcc
-    gtk3
-    gtk4
-    usbutils
-    glxinfo
-
-  # WM Stuff
-    nwg-displays
-    kitty
-    rofi
-    mpd
-    dunst
-  
+    
   # Optional Stuff
     fastfetch
     keepassxc
     python3
     flameshot
     xclip
-    kanata
 
   # GAMIG
     prismlauncher
@@ -45,7 +33,6 @@
     ] ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
       # UNSTABLE
       vesktop
-      obs-studio
       wireguard-tools
     ]);
 
@@ -53,7 +40,7 @@
   programs.git = {
     enable = true;
     userName = "campfirelena";
-    userEmail = "dan.cairns@outlook.com";
+    userEmail = "campfirelena@outlook.com";
     extraConfig = {
      init.defaultBranch = "main";
      safe.directory = "/etc/nixos";
@@ -63,6 +50,6 @@
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;
   
-  home.stateVersion = "24.05"; #SET TO SPECIFIC ISO VERSION
+  home.stateVersion = "24.11"; #SET TO SPECIFIC ISO VERSION
 
 }
