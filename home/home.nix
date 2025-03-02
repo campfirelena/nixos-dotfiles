@@ -1,14 +1,19 @@
 { inputs, pkgs, username, homeDirectory, ... }:
-
 {
   imports = [
     #./spicetify
     ./nvim/default.nix
     #./awesome/default.nix
   ];
-  home.username = "elena";
-  home.homeDirectory = "/home/elena";
 
+  home = {
+    inherit username;
+    stateVersion = "24.11";
+    sessionPath = [ "$HOME/.local/bin" ];
+    homeDirectory = pkgs.lib.mkDefault "/home/elena";
+  };
+
+  #Turn modules on and off for each user
   nvim.enable = true;
 
   home.packages = with pkgs; [
@@ -21,20 +26,7 @@
   # Optional Stuff
     fastfetch
     keepassxc
-    python3
-    flameshot
-    xclip
-
-  # GAMIG
-    prismlauncher
-    r2modman
-    jdk17
-
-    ] ++ (with inputs.nixpkgs-unstable.legacyPackages.${pkgs.system}; [
-      # UNSTABLE
-      vesktop
-      wireguard-tools
-    ]);
+    ];
 
   # Git config
   programs.git = {
@@ -50,6 +42,5 @@
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;
   
-  home.stateVersion = "24.11"; #SET TO SPECIFIC ISO VERSION
 
 }

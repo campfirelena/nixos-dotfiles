@@ -58,7 +58,7 @@
       [ home-manager.nixosModules.home-manager {
         home-manager = {
           useUserPackages = true;
-          useGlobalPackages = false;
+          useGlobalPkgs = false;
           extraSpecialArgs = {
             inherit
             inputs
@@ -94,7 +94,7 @@
       };
       pkgs = nixpkgsFor."${system}";
       modules = [
-        ./home/${username}/home.nix
+        ./home/home.nix
         { home = {
           username = username;
           homeDirectory = homeDirectory;
@@ -118,7 +118,7 @@ in
         system = "x86_64-linux";
         hostname = "server";
         username = "elena";
-        homeDirectory = "home/elena";
+        homeDirectory = "/home/elena";
         modules = [ ];
       };
     };
