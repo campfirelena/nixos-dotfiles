@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 {
 programs.gamemode.enable = true;
 programs.gamescope.enable = true;

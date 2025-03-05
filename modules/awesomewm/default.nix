@@ -1,5 +1,8 @@
-{ config, nixpkgs, pkgs, ... }:
-{
+{ config, nixpkgs, pkgs, ... }:{
+options = {
+  awesomewm.enable = lib.mkEnableOption "Enable AwesomeWM system module";
+};
+config = lib.mkIf config.awesomewm.enable {
   services = {
     displayManager = {
       sddm.enable = true;
@@ -16,4 +19,5 @@
   environment.systemPackages = with pkgs; [
   picom
   ];
+};
 }
