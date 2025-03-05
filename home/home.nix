@@ -1,9 +1,7 @@
 { inputs, pkgs, username, homeDirectory, ... }:
 {
   imports = [
-    #./spicetify
-    ./nvim/default.nix
-    #./awesome/default.nix
+    ../pkgs
   ];
 
   home = {

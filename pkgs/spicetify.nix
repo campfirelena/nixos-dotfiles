@@ -3,6 +3,11 @@ let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in
 {
+  options = {
+    mkEnableOption "enable Spicetify module";
+  };
+
+  config = lib.mkIf config.spicetify.enable {
   imports = [ inputs.spicetify-nix.homeManagerModules.default ];
 
   home.packages = [
@@ -33,5 +38,6 @@ in
       icon = "spotify";
       type = "Application";
     };
+  };
   };
 }
