@@ -2,21 +2,23 @@
 {
   imports = [
     ../pkgs
+    ./elena
+    ./river
   ];
 
   home = {
     inherit username;
     stateVersion = "24.11";
     sessionPath = [ "$HOME/.local/bin" ];
-    homeDirectory = pkgs.lib.mkDefault "/home/elena";
+    homeDirectory = pkgs.lib.mkDefault "/home/${username}";
   };
+  ${username}.enable = true;
 
   #Turn modules on and off for each user
   nvim.enable = true;
 
   home.packages = with pkgs; [
   # Essentials
-    firefox
     btop
     nerdfonts
     unzip
@@ -25,17 +27,6 @@
     fastfetch
     keepassxc
     ];
-
-  # Git config
-  programs.git = {
-    enable = true;
-    userName = "campfirelena";
-    userEmail = "campfirelena@outlook.com";
-    extraConfig = {
-     init.defaultBranch = "main";
-     safe.directory = "/etc/nixos";
-    };
-  };
 
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;

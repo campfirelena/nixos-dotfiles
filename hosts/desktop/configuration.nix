@@ -25,7 +25,7 @@
     options = "--delete-older-than 7d";
   };
 
-  networking.hostName = "nixos-server";
+  networking.hostName = "nixos-desktop";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Australia/Perth";
@@ -51,6 +51,7 @@
     neovim
     git
     curl
+    autorandr
   ];
 
   # DEFAULTS
