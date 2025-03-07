@@ -1,6 +1,6 @@
 { pkgs, config, ... }:{
   options = {
-    enable = mkEnableOption "enable AwesomeWM module";
+    awesome.enable = mkEnableOption "enable AwesomeWM module";
   }
   config = lib.mkIf config.awesome.enable {
   home.file.".config/awesome".source = config.lib.file.mkOutOfStoreSymlink

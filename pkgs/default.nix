@@ -4,10 +4,6 @@
     ./neovim.nix
     ./spicetify.nix
     ./awesome.nix
+    ./steam.nix
   ];
-
-  firefox.enable = true;
-  neovim.enable = true;
-  awesome.enable = true;
-  spicetify.enable = true;
 }

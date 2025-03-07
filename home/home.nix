@@ -1,4 +1,4 @@
-{ inputs, pkgs, username, homeDirectory, ... }:
+{ inputs, pkgs, username, homeDirectory, hostname, ... }:
 {
   imports = [
     ../pkgs
@@ -14,22 +14,16 @@
   };
   ${username}.enable = true;
 
-  #Turn modules on and off for each user
-  nvim.enable = true;
-
   home.packages = with pkgs; [
-  # Essentials
+  # Essentials for every user
     btop
     nerdfonts
     unzip
-    
-  # Optional Stuff
-    fastfetch
     keepassxc
+    bitwarden
     ];
 
+  # Running without bash would be stupid
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;
-  
-
 }
