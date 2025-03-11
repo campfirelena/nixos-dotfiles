@@ -3,6 +3,7 @@
 { 
   imports =[
     ./hardware-configuration.nix
+    ../../modules
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -41,17 +42,18 @@
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
   #services.xserver.xkb.options = "eurosign:e,caps:escape";
- 
-  users.users.${username} = {
-    isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "kvm" "libvirtd" ];
-  };
 
   environment.systemPackages = with pkgs; [
     neovim
     git
     curl
   ];
+
+  # Selecting what root modules to run
+  rivalcfg.enable = false;
+  awesomewm.enable = true;
+  hyprland.enable = false;
+
 
   # DEFAULTS
 
