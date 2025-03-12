@@ -6,6 +6,11 @@
     ../../modules
   ];
 
+  # Selecting what root modules to run
+  rivalcfg.enable = false;
+  awesomewm.enable = true;
+  hyprland.enable = false;
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -48,11 +53,6 @@
     git
     curl
   ];
-
-  # Selecting what root modules to run
-  rivalcfg.enable = false;
-  awesomewm.enable = true;
-  hyprland.enable = false;
 
 
   # DEFAULTS

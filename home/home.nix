@@ -4,6 +4,7 @@
     ../pkgs
     ./elena
     ./river
+    ./common.nix
   ];
 
   home = {
@@ -26,4 +27,7 @@
   # Running without bash would be stupid
   programs.bash.enable = true;
   programs.bash.enableCompletion = true;
+
+  # Allow home manager to download itself if needed
+  programs.home-manager.enable = true;
 }
