@@ -1,5 +1,7 @@
 # nixos-dotfiles
-Hosts are different machines. 
-Home will inherit each user for each host. 
-Modules are run at the system-level and therefore are controlled by the host. 
-This is not tested very often so lots of fix changes will happen. 
+The folders have specific purposes. 
+Config holds all the stuff that would be symlinked into $HOME/.config/ 
+Hosts are the machines that will run on this config. To add a machine, just add a folder and a short config to turn the modules on and off. 
+Modules are program-specific configs for the system level. The hosts directory links here. 
+Pkgs are program-specific configs for the user level. The users directory links here. 
+Users is all the users that can be on any machine. To add a user, add a folder and default.nix and home.nix. I might change this to a different setup so that users can change their stuff without needing root/sudo access. 
