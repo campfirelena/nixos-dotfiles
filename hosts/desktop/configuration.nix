@@ -3,7 +3,6 @@
 { 
   imports =[
     ./hardware-configuration.nix
-    ../../modules
   ];
   
   # Selecting what root modules to run

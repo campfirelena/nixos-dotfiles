@@ -18,119 +18,54 @@
 
   outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, disko, hyprland, ... }@inputs:
   let
-    inherit (nixpkgs.lib) nixosSystem;
-    supportedSystems = [
-      "x86_64-linux"
-      "x86_64-darwin"
-      "aarch64-linux"
-      "aarch64-darwin"
-    ];
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+  in
 
-    # Helper function to generate an attrset '{ x86_64-linux = f "x86_64-linux"; ... }'.
-    forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-
-    # Nixpkgs chooses the system type
-    nixpkgsFor = forAllSystems (system: import nixpkgs { inherit system; });
-    
-    # Function to create nixosConfigurations
-    createNixosConfiguration = {
-      system,
-      username,
-      homeDirectory,
-      hostname ? null,
-      modules ? [],
-      includeHomeManager ? true,
-    }:
-    nixosSystem {
-      inherit system;
-        specialArgs = {
-          inherit
-            inputs
-            hyprland
-            disko
-            ;
-          inherit username homeDirectory hostname;
-    };
-    modules = [
-      ./hosts/${hostname}/configuration.nix
-    ] ++ (
-    if includeHomeManager then
-      [ home-manager.nixosModules.home-manager {
-        home-manager = {
-          useUserPackages = true;
-          useGlobalPkgs = false;
-          extraSpecialArgs = {
-            inherit
-            inputs
-            disko
-            nixpkgs
-            ;
-          };
-          users."${username}" = import ./home/home.nix {
-            inputs = inputs;
-            pkgs = nixpkgsFor."${system}";
-            inherit username homeDirectory;
-        };
-        };
-      }
-      ]
-    else
-    []
-    )
-    ++ modules;
-  };
-    #make other users
-    createHomeManagerConfiguration = {
-      system,
-      username,
-      homeDirectory,
-      stateVersion ? "24.11",
-      modules ? [],
-    }:
-    home-manager.lib.homeManagerConfiguration {
-      extraSpecialArgs = {
-        inherit inputs hyprland;
-        inherit username homeDirectory stateVersion;
-      };
-      pkgs = nixpkgsFor."${system}";
-      modules = [
-        ./home/home.nix
-        { home = {
-          username = username;
-          homeDirectory = homeDirectory;
-          stateVersion = stateVersion;
-        };}
-      ] ++ modules;
-    };
-in
+  # This part is heavily inspired by sebastianrasor's flake. Eventually I will change this to make it more different and as my own as possible.
   {
-    nixosConfigurations = {
-      desktop = createNixosConfiguration {
-        system = "x86_64-linux";
-        hostname = "desktop";
-        username = "elena";
-        homeDirectory = "/home/elena";
-        modules = [
-          hyprland.nixosModules.default
-        ];
-      };
-      server = createNixosConfiguration {
-        system = "x86_64-linux";
-        hostname = "server";
-        username = "elena";
-        homeDirectory = "/home/elena";
-        modules = [ ];
-      };
-    };
+    nixosConfigurations = builtins.listToAttrs (
+        map(
+            nixosConfiguration: with pkgs.lib; {
+                name = ;
+                value = nixpkgs.lib.nixosSystem = {
+                    specialArgs = {inherit inputs hyprland disko};
+                    modules = [
+                        (./hosts + ("/" + nixosConfiguration))
+                    ] ++ attrsets.attrValues self.nixosModules;
+                };
+            }
+        ) (builtins.attrNames (builtins.readDir ./hosts))
+    );
 
-    homeConfigurations = {
-      "elena" = createHomeManagerConfiguration {
-        system = "x86_64-linux";
-        username = "elena";
-        homeDirectory = "/home/elena";
-        stateVersion = "24.11";
-        modules = [];
-      };
-    };
-};
+    homeConfigurations = with pkgs.lib; concatMapAttrs (
+        map (username: {
+            name = username + "@" hostname;
+            value = home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                extraSpecialArgs = {
+                    inherit inputs hyprland;
+                    inherit username hostname;
+                };
+                modules = [ ./users/${username}/home.nix] ++ attrsets.attrValues self.homeModules;
+            };
+        })
+    )
+    homeModules = with pkgs.lib; attrsets.mapAttrs (
+        name: _:
+        attrsets.nameValuePair (removeSuffix ".nix" name) (import (./pkgs + ("/" + name))) ( builtins.readDir ./pkgs)
+    )
+
+    nixosModules = with pkgs.lib; attrsets.mapAttrs (
+        name: _:
+        attrsets.nameValuePair (removeSuffix ".nix" name) (import (./modules + ("/" + name))) ( builtins.readDir ./modules)
+    // {
+        home-manager-extra = {
+            home-manager = {
+                extraSpecialArgs = { inherit inputs };
+                sharedModules = attrsets.attrValues self.homeModules;
+            };
+        };
+    })
+  }
 }
