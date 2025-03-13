@@ -1,4 +1,4 @@
-{ inputs, pkgs, hostname, ... }:
+{ pkgs, hostname, ... }:
 {
   home = {
     username = "elena";
@@ -47,4 +47,9 @@
 
   # Allow home manager to download itself if needed
   programs.home-manager.enable = true;
+
+  nixpkgs.config = lib.mkIf (!builtins.hasAttr "nixosConfig" args) {
+    allowUnfree = true;
+    allowUnfreePredicate = _: true;
+  };
 }

@@ -1,12 +1,5 @@
 { inputs, pkgs, hostname, ... }:
 {
-  imports = [
-    ../pkgs
-    ./elena
-    ./river
-    ./common.nix
-  ];
-
   home = {
     username = "river";
     stateVersion = "24.11";
