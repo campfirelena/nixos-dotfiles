@@ -31,11 +31,11 @@
                 value = nixpkgs.lib.nixosSystem = {
                     specialArgs = {inherit inputs hyprland disko};
                     modules = [
-                        (./hosts + ("/" + nixosConfiguration))
+                        (./hosts + ("/" + nixosConfiguration)) # Uses the name that nixosConfiguration is focusing on
                     ] ++ attrsets.attrValues self.nixosModules;
                 };
             }
-        ) (builtins.attrNames (builtins.readDir ./hosts))
+        ) (builtins.attrNames (builtins.readDir ./hosts)) # Reads the directory "hosts" and uses the folder names as attribute names
     );
 
     homeConfigurations = with pkgs.lib; concatMapAttrs (
@@ -50,12 +50,15 @@
                 modules = [ ./users/${username}/home.nix] ++ attrsets.attrValues self.homeModules;
             };
         })
-    )
+    );
+
+    # Imports all user-based modules as homeModules into home manager
     homeModules = with pkgs.lib; attrsets.mapAttrs (
         name: _:
-        attrsets.nameValuePair (removeSuffix ".nix" name) (import (./pkgs + ("/" + name))) ( builtins.readDir ./pkgs)
-    )
+        attrsets.nameValuePair (removeSuffix ".nix" name) (import (./home + ("/" + name))) ( builtins.readDir ./home)
+    );
 
+    # Imports all system-based modules as nixosModules
     nixosModules = with pkgs.lib; attrsets.mapAttrs (
         name: _:
         attrsets.nameValuePair (removeSuffix ".nix" name) (import (./modules + ("/" + name))) ( builtins.readDir ./modules)
@@ -66,6 +69,6 @@
                 sharedModules = attrsets.attrValues self.homeModules;
             };
         };
-    })
+    });
   }
 }
