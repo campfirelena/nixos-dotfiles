@@ -1,9 +1,9 @@
 { config, lib, pkgs, modulesPath, inputs, username, ... }:
 
 { 
-  imports =[
+  imports = [
     ./hardware-configuration.nix
-  ];
+  ] ++ map( moduleFile: ../../users + ( "/" + moduleFile)) (builtins.attrNames (builtins.readDir ../../users));
 
   # Selecting what root modules to run
   rivalcfg.enable = false;
@@ -76,5 +76,5 @@
   # This defines what kind of file structure is used
   # in the nix store
   system.stateVersion = "24.11";
-  
+
 }

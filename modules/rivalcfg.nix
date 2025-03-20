@@ -1,4 +1,4 @@
-{ pkgs, ... }:{
+{ config, lib, pkgs, ... }:{
 options = {
   rivalcfg.enable = lib.mkEnableOption "Enable Rivalcfg system module";
 }; 

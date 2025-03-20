@@ -1,4 +1,4 @@
-{ pkgs, hostname, ... }:
+{ pkgs, hostname, lib, ... }:
 {
   home = {
     username = "elena";
@@ -7,20 +7,20 @@
   };
 
     # Enable what you want to use, depending on the system
-  if hostname = "server" then {
+#  if hostname = "server" then {
   neovim.enable = true;
   firefox.enable = false;
-  spicetify.enable = false;
-  steam.enable = false;
+#  spicetify.enable = false;
+#  steam.enable = false;
   awesome.enable = false;
-  };
-  else if hostname = "desktop" then {
-    neovim.enable = true;
-    firefox.enable = true;
-    spicetify.enable = true;
-    steam.enable = true;
-    awesome.enable = true;
-  };
+#  };
+#  else if hostname = "desktop" then {
+#    neovim.enable = true;
+#    firefox.enable = true;
+#    spicetify.enable = true;
+#    steam.enable = true;
+#    awesome.enable = true;
+#  };
 
   programs.git = {
     enable = true;
@@ -48,7 +48,7 @@
   # Allow home manager to download itself if needed
   programs.home-manager.enable = true;
 
-  nixpkgs.config = lib.mkIf (!builtins.hasAttr "nixosConfig" args) {
+  nixpkgs.config = {
     allowUnfree = true;
     allowUnfreePredicate = _: true;
   };

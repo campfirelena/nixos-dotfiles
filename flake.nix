@@ -5,18 +5,18 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-    disko.url = "github:nix-community/disko";
+    #disko.url = "github:nix-community/disko";
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
-  outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, disko, hyprland, ... }@inputs:
+  outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, ... }@inputs:
   let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
@@ -27,9 +27,9 @@
     nixosConfigurations = builtins.listToAttrs (
         map(
             nixosConfiguration: with pkgs.lib; {
-                name = ;
-                value = nixpkgs.lib.nixosSystem = {
-                    specialArgs = {inherit inputs hyprland disko};
+                name = removeSuffix ".nix" nixosConfiguration;
+                value = nixpkgs.lib.nixosSystem {
+                    specialArgs = inputs // { inherit inputs; };
                     modules = [
                         (./hosts + ("/" + nixosConfiguration)) # Uses the name that nixosConfiguration is focusing on
                     ] ++ attrsets.attrValues self.nixosModules;
@@ -39,6 +39,7 @@
     );
 
     homeConfigurations = with pkgs.lib; concatMapAttrs (
+      hostname:usernames: builtins.listToAttrs(
         map (username: {
             name = username + "@" hostname;
             value = home-manager.lib.homeManagerConfiguration {
@@ -50,7 +51,15 @@
                 modules = [ ./users/${username}/home.nix] ++ attrsets.attrValues self.homeModules;
             };
         })
-    );
+	usernames
+      )
+      )
+      (
+        mapAttrs'(
+	  hostName: _:
+	    nameValuePair hostName (attrNames (builtins.readDir ./users))
+	) (builtins.readDir ./hosts)
+      );
 
     # Imports all user-based modules as homeModules into home manager
     homeModules = with pkgs.lib; attrsets.mapAttrs (
@@ -59,16 +68,10 @@
     );
 
     # Imports all system-based modules as nixosModules
-    nixosModules = with pkgs.lib; attrsets.mapAttrs (
+    nixosModules = with pkgs.lib; attrsets.mapAttrs' (
         name: _:
-        attrsets.nameValuePair (removeSuffix ".nix" name) (import (./modules + ("/" + name))) ( builtins.readDir ./modules)
+        attrsets.nameValuePair (removeSuffix ".nix" name) (import (./modules + ("/" + name)))) ( builtins.readDir ./modules)
     // {
-        home-manager-extra = {
-            home-manager = {
-                extraSpecialArgs = { inherit inputs };
-                sharedModules = attrsets.attrValues self.homeModules;
-            };
-        };
-    });
-  }
+    };
+  };
 }
