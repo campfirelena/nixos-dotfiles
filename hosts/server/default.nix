@@ -9,6 +9,7 @@
   rivalcfg.enable = false;
   awesomewm.enable = true;
   hyprland.enable = false;
+  home-manager.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

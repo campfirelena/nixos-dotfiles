@@ -44,11 +44,14 @@
             name = username + "@" hostname;
             value = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = {
-                    inherit inputs hyprland;
+                extraSpecialArgs = inputs // {
+                    inherit inputs;
                     inherit username hostname;
                 };
-                modules = [ ./users/${username}/home.nix] ++ attrsets.attrValues self.homeModules;
+                modules = [ 
+		./users/${username}/home.nix
+		./modules/home-manager.nix
+		] ++ attrsets.attrValues self.homeModules;
             };
         })
 	usernames
@@ -57,12 +60,11 @@
       (
         mapAttrs'(
 	  hostName: _:
-	    nameValuePair hostName (attrNames (builtins.readDir ./users))
-	) (builtins.readDir ./hosts)
+	    nameValuePair hostName (attrNames (builtins.readDir ./users))) (builtins.readDir ./hosts)
       );
 
     # Imports all user-based modules as homeModules into home manager
-    homeModules = with pkgs.lib; attrsets.mapAttrs (
+    homeModules = with pkgs.lib; attrsets.mapAttrs' (
         name: _:
         attrsets.nameValuePair (removeSuffix ".nix" name) (import (./home + ("/" + name))) ( builtins.readDir ./home)
     );
@@ -72,6 +74,13 @@
         name: _:
         attrsets.nameValuePair (removeSuffix ".nix" name) (import (./modules + ("/" + name)))) ( builtins.readDir ./modules)
     // {
+        flake-home-manager = home-manager.nixosModules.home-manager;
+        home-manager-extra = {
+	  home-manager = {
+	    extraSpecialArgs = inputs // { inherit inputs; };
+	    #sharedModules = attrsets.attrValues self.homeModules;
+	  };
+	};
     };
   };
 }

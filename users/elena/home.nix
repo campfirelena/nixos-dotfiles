@@ -1,18 +1,12 @@
 { pkgs, hostname, lib, ... }:
 {
-  home = {
-    username = "elena";
-    stateVersion = "24.11";
-    homeDirectory = "/home/elena";
-  };
-
-    # Enable what you want to use, depending on the system
+# Enable what you want to use, depending on the system
 #  if hostname = "server" then {
   neovim.enable = true;
-  firefox.enable = false;
+  firefox.enable = true;
 #  spicetify.enable = false;
 #  steam.enable = false;
-  awesome.enable = false;
+#  awesomewm.enable = true;
 #  };
 #  else if hostname = "desktop" then {
 #    neovim.enable = true;
@@ -21,6 +15,14 @@
 #    steam.enable = true;
 #    awesome.enable = true;
 #  };
+     kitty.enable = true;
+
+
+  home = {
+    username = "elena";
+    stateVersion = "24.11";
+    homeDirectory = "/home/elena";
+  };
 
   programs.git = {
     enable = true;
