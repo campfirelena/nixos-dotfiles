@@ -8,5 +8,4 @@ users.users.elena = {
 };
 
 home-manager.users.elena = lib.mkIf config.home-manager.enable (import ./home.nix);
-
 }
