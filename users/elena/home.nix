@@ -1,23 +1,5 @@
 { pkgs, hostname, lib, ... }:
 {
-# Enable what you want to use, depending on the system
-#  if hostname = "server" then {
-  neovim.enable = true;
-  firefox.enable = true;
-#  spicetify.enable = false;
-#  steam.enable = false;
-#  awesomewm.enable = true;
-#  };
-#  else if hostname = "desktop" then {
-#    neovim.enable = true;
-#    firefox.enable = true;
-#    spicetify.enable = true;
-#    steam.enable = true;
-#    awesome.enable = true;
-#  };
-     kitty.enable = true;
-
-
   home = {
     username = "elena";
     stateVersion = "24.11";

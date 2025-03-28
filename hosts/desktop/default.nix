@@ -1,7 +1,7 @@
 { config, lib, pkgs, modulesPath, inputs, username, ... }:
 
 { 
-  imports =[
+  imports = [
     ./hardware-configuration.nix
   ];
   

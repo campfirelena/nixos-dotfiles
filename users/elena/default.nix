@@ -1,4 +1,10 @@
 { config, lib, ... }:{
+imports = [
+  ./settings.nix
+];
+
+userapps.enable = true;
+
 users.users.elena = {
   isNormalUser = true;
   home = "/home/elena";
