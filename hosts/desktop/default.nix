@@ -6,9 +6,17 @@
   ];
   
   # Selecting what root modules to run
-  rivalcfg.enable = false;
+
   awesomewm.enable = true;
+  findom.enable = true;
+  frigate.enable = true;
+  home-assistant.enable = true;
+  home-manager.enable = true;
   hyprland.enable = false;
+  immich.enavle = true;
+  jellyfin.enable = true;
+  mailcow.enable = true;
+  rivalcfg.enable = false;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -51,7 +59,6 @@
     neovim
     git
     curl
-    autorandr
   ];
 
   # DEFAULTS
