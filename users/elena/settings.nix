@@ -23,5 +23,13 @@ config = mkIf config.userapps.enable {
     spicetify.enable = true;
     steam.enable = true;
   };
+  else if userapps.host == "testing" then {
+    awesome.enable = false;
+    firefox.enable = false;
+    kitty.enable = false;
+    neovim.enable = true;
+    spicetify.enable = false;
+    steam.enable = false;
+  };
 };
 }
