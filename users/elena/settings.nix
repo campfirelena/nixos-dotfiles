@@ -1,13 +1,13 @@
-{ config, lib, hostname ... }:{
+{ config, lib, hostname, ... }:{
 options = {
-  userapps.enable = mkEnableOption "Enable main apps options";
-  userapps.host = mkOtion {
+  userapps.enable = lib.mkEnableOption "Enable main apps options";
+  userapps.host = lib.mkOption {
   Type = types.str;
   default = "${hostname}";
-  }
+  };
 };
-config = mkIf config.userapps.enable {
-  if userapps.host == "server" then {
+config = lib.mkIf config.userapps.enable { lib.mkMerge [
+  lib.mkIf (userapps.host == "server") {
     awesome.enable = false;
     firefox.enable = false;
     kitty.enable = false;
@@ -15,7 +15,7 @@ config = mkIf config.userapps.enable {
     spicetify.enable = false;
     steam.enable = false;
   };
-  else if userapps.host == "desktop" then {
+  lib.mkIf (userapps.host == "desktop") {
     awesome.enable = true;
     firefox.enable = true;
     kitty.enable = true;
@@ -23,7 +23,7 @@ config = mkIf config.userapps.enable {
     spicetify.enable = true;
     steam.enable = true;
   };
-  else if userapps.host == "testing" then {
+  lib.mkIf (userapps.host == "testing") {
     awesome.enable = false;
     firefox.enable = false;
     kitty.enable = false;
@@ -31,5 +31,6 @@ config = mkIf config.userapps.enable {
     spicetify.enable = false;
     steam.enable = false;
   };
+];
 };
 }

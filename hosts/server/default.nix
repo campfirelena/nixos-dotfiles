@@ -10,6 +10,7 @@
   awesomewm.enable = false;
   findom.enable = true;
   frigate.enable = true;
+  grocy.enable = true;
   home-assistant.enable = true;
   home-manager.enable = true;
   hyprland.enable = false;

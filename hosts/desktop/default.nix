@@ -8,14 +8,15 @@
   # Selecting what root modules to run
 
   awesomewm.enable = true;
-  findom.enable = true;
-  frigate.enable = true;
-  home-assistant.enable = true;
-  home-manager.enable = true;
+  findom.enable = false;
+  frigate.enable = false;
+  grocy.enable = false;
+  home-assistant.enable = false;
+  home-manager.enable = false;
   hyprland.enable = false;
-  immich.enavle = true;
-  jellyfin.enable = true;
-  mailcow.enable = true;
+  immich.enavle = false;
+  jellyfin.enable = false;
+  mailcow.enable = false;
   rivalcfg.enable = false;
 
   # Use the systemd-boot EFI boot loader.
