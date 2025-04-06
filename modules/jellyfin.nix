@@ -1,7 +1,7 @@
 { config, lib, ... }:
 {
 options = {
-  jellyfin.enable = lib.mkEnableOption "Enable Jellyfin system module";
+  jellyfin.enable = lib.mkEnableOption "";
 };
 config = lib.mkIf config.jellyfin.enable {
   #services.jellyfin.enable = true;

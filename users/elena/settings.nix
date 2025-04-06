@@ -1,6 +1,6 @@
 { config, lib, hostname, ... }:{
 options = {
-  userapps.enable = lib.mkEnableOption "Enable main apps options";
+  userapps.enable = lib.mkEnableOption "";
   userapps.host = lib.mkOption {
   Type = types.str;
   default = "${hostname}";

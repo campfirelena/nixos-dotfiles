@@ -1,6 +1,6 @@
 { config, lib, pkgs, ... }:{
 options = {
-  rivalcfg.enable = lib.mkEnableOption "Enable Rivalcfg system module";
+  rivalcfg.enable = lib.mkEnableOption "";
 }; 
 config = lib.mkIf config.rivalcfg.enable {
   environment.systemPackages = [

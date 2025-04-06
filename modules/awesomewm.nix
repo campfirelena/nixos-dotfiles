@@ -1,6 +1,6 @@
 { config, nixpkgs, pkgs, lib, ... }:{
 options = {
-  awesomewm.enable = lib.mkEnableOption "Enable AwesomeWM system module";
+  awesomewm.enable = lib.mkEnableOption "";
 };
 config = lib.mkIf config.awesomewm.enable {
   services.xserver = {

@@ -4,7 +4,7 @@ let
 in
 {
 options = {
-  spicetify.enable = mkEnableOption "enable Spicetify module";
+  spicetify.enable = mkEnableOption "";
 };
 config = lib.mkIf config.spicetify.enable {
   imports = [ inputs.spicetify-nix.homeManagerModules.default ];
