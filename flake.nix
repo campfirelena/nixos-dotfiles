@@ -49,38 +49,37 @@
                     inherit username hostname;
                 };
                 modules = [ 
-		./users/${username}/home.nix
-		./modules/home-manager.nix
-		] ++ attrsets.attrValues self.homeModules;
+		              ./users/${username}/home.nix
+		              ./modules/home-manager.nix
+		            ] ++ attrsets.attrValues self.homeModules;
             };
         })
 	usernames
       )
-      )
-      (
-        mapAttrs'(
-	  hostName: _:
+    )
+    ( mapAttrs'(
+	    hostName: _:
 	    nameValuePair hostName (attrNames (builtins.readDir ./users))) (builtins.readDir ./hosts)
-      );
+    );
 
     # Imports all user-based modules as homeModules into home manager
     homeModules = with pkgs.lib; attrsets.mapAttrs' (
-        name: _:
-        attrsets.nameValuePair (removeSuffix ".nix" name) (import (./home + ("/" + name))) ( builtins.readDir ./home)
+      name: _:
+      attrsets.nameValuePair (removeSuffix ".nix" name) (import (./home + ("/" + name))) ( builtins.readDir ./home)
     );
 
     # Imports all system-based modules as nixosModules
     nixosModules = with pkgs.lib; attrsets.mapAttrs' (
-        name: _:
-        attrsets.nameValuePair (removeSuffix ".nix" name) (import (./modules + ("/" + name)))) ( builtins.readDir ./modules)
+      name: _:
+      attrsets.nameValuePair (removeSuffix ".nix" name) (import (./modules + ("/" + name)))) ( builtins.readDir ./modules)
     // {
-        flake-home-manager = home-manager.nixosModules.home-manager;
-        home-manager-extra = {
-	  home-manager = {
-	    extraSpecialArgs = inputs // { inherit inputs; };
-	    #sharedModules = attrsets.attrValues self.homeModules;
-	  };
-	};
+      flake-home-manager = home-manager.nixosModules.home-manager;
+      home-manager-extra = {
+	      home-manager = {
+	        extraSpecialArgs = inputs // { inherit inputs; };
+	        #sharedModules = attrsets.attrValues self.homeModules;
+	      };
+	    };
     };
   };
 }

@@ -17,27 +17,12 @@
   immich.enavle = false;
   jellyfin.enable = false;
   mailcow.enable = false;
+  nix.enable = true;
   rivalcfg.enable = false;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # Use Flakes
-  nix = {
-    extraOptions = "experimental-features = nix-command flakes";
-  };
-  nixpkgs.config = {
-    allowUnfree = true;
-    permittedInsecurePackages = ["electron_34"];
-  };
-
-  # Garbage Collection
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
-  };
 
   networking.hostName = "nixos-desktop";
   networking.networkmanager.enable = true;
