@@ -8,15 +8,11 @@
   # Selecting what root modules to run
   
   awesomewm.enable = false;
-  findom.enable = true;
-  frigate.enable = true;
   grocy.enable = true;
-  home-assistant.enable = true;
   home-manager.enable = true;
   hyprland.enable = false;
   immich.enavle = true;
   jellyfin.enable = true;
-  mailcow.enable = true;
   nix.enable = true;
   rivalcfg.enable = false;
 

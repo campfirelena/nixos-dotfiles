@@ -1,36 +1,20 @@
-{ inputs, pkgs, hostname, ... }:
+{ pkgs, hostname, lib, ... }:
 {
-    home = {
+  home = {
     username = "river";
     stateVersion = "24.11";
     homeDirectory = "/home/river";
   };
 
-    # Enable what you want to use, depending on the system
-#  if hostname = "server" then {
-#  neovim.enable = true;
-#  firefox.enable = false;
-#  spicetify.enable = false;
-#  steam.enable = false;
-#  awesome.enable = false;
+#  programs.git = {
+#    enable = true;
+#    userName = "campfirelena";
+#    userEmail = "campfirelena@outlook.com";
+#    extraConfig = {
+#      init.defaultBranch = "main";
+#      safe.directory = "/etc/nixos";
+#    };
 #  };
-#  else if hostname = "desktop" then {
-#    neovim.enable = true;
-#    firefox.enable = true;
-#    spicetify.enable = true;
-#    steam.enable = true;
-#    awesome.enable = true;
-#  };
-
-  programs.git = {
-  enable = true;
-  userName = "campfirelena";
-  userEmail = "campfirelena@outlook.com";
-  extraConfig = {
-    init.defaultBranch = "main";
-    safe.directory = "/etc/nixos";
-  };
-};
 
   home.packages = with pkgs; [
   # Essentials for every user
@@ -47,4 +31,9 @@
 
   # Allow home manager to download itself if needed
   programs.home-manager.enable = true;
+
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = _: true;
+  };
 }
