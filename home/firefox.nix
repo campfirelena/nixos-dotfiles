@@ -1,6 +1,6 @@
 {lib, config, pkgs, ...}:{
 options = {
-  firefox.enable = mkEnableOption "";
+  firefox.enable = lib.mkEnableOption "";
 };
 config = lib.mkIf config.firefox.enable {
   programs.firefox = {

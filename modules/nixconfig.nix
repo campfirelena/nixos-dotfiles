@@ -1,8 +1,8 @@
 { config, lib, ... }:{
 options = {
-  nix.enable = lib.mkEnableOption "";
+  nixconfig.enable = lib.mkEnableOption "";
 };
-config = lib.mkIf config.nix.enable {
+config = lib.mkIf config.nixconfig.enable {
   # Use Flakes
   nix = {
     extraOptions = "experimental-features = nix-command flakes";

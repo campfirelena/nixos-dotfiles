@@ -13,7 +13,7 @@
   hyprland.enable = false;
   immich.enavle = false;
   jellyfin.enable = false;
-  nix.enable = true;
+  nixconfig.enable = true;
   rivalcfg.enable = false;
 
   # Use the systemd-boot EFI boot loader.

@@ -1,11 +1,10 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 {
 options = {
   immich.enable = lib.mkEnableOption "";
 };
 config = lib.mkIf config.immich.enable {
   services.immich.enable = true
-  services.immich.accelerationDevices = null;
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [

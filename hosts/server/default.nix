@@ -8,12 +8,12 @@
   # Selecting what root modules to run
   
   awesomewm.enable = false;
-  grocy.enable = true;
+  grocy.enable = false;
   home-manager.enable = true;
   hyprland.enable = false;
-  immich.enable = true;
-  jellyfin.enable = true;
-  nix.enable = true;
+  immich.enable = false;
+  jellyfin.enable = false;
+  nixconfig.enable = true;
   rivalcfg.enable = false;
 
 

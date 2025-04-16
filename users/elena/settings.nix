@@ -49,5 +49,19 @@ config = lib.mkIf config.userapps.enable (lib.mkMerge [
     steam.enable = true;
     stylix.enable = true;
   })
+  (lib.mkIf (config.userapps.host == "testing") {
+    autorandr.enable = false;
+    awesome.enable = false;
+    bash.enable = true;
+    firefox.enable = false;
+    flatpak.enable = false;
+    kitty.enable = false;
+    modman.enable = false;
+    neovim.enable = false;
+    obsidian.enable = false;
+    spicetify.enable = false;
+    steam.enable = false;
+    stylix.enable = false;
+  })
 ]);
 }

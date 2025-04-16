@@ -3,24 +3,25 @@
 { 
   imports = [
     ./hardware-configuration.nix
-  ];
-  
-  # Selecting what root modules to run
+  ] ++ map( moduleFile: ../../users + ( "/" + moduleFile)) (builtins.attrNames (builtins.readDir ../../users));
 
-  awesomewm.enable = true;
-  grocy.enable = false;
-  home-manager.enable = false;
+  # Selecting what root modules to run
+  
+  awesomewm.enable = false;
+  grocy.enable = true;
+  home-manager.enable = true;
   hyprland.enable = false;
-  immich.enavle = false;
-  jellyfin.enable = false;
+  immich.enable = true;
+  jellyfin.enable = true;
   nixconfig.enable = true;
-  rivalcfg.enable = true;
+  rivalcfg.enable = false;
+
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos-desktop";
+  networking.hostName = "nixos-server";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Australia/Perth";
@@ -42,6 +43,7 @@
     git
     curl
   ];
+
 
   # DEFAULTS
 
@@ -65,5 +67,5 @@
   # This defines what kind of file structure is used
   # in the nix store
   system.stateVersion = "24.11";
-  
+
 }

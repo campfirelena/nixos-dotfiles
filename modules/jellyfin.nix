@@ -1,11 +1,11 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 {
 options = {
   jellyfin.enable = lib.mkEnableOption "";
 };
 config = lib.mkIf config.jellyfin.enable {
   services.jellyfin.enable = true;
-  environment.systemPackages = with pkgs [
+  environment.systemPackages = with pkgs; [
     jellyfin
     jellyfin-web
     jellyfin-ffmpeg
