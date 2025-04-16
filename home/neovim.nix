@@ -1,8 +1,8 @@
 { pkgs, config, lib, ... }: {
 options = {
-  neovim.enable = lib.mkEnableOption "";
+  home.neovim.enable = lib.mkEnableOption "";
 };
-config = lib.mkIf  config.nvim.enable {
+config = lib.mkIf  config.home.nvim.enable {
   home.file.".config/nvim".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-dotfiles/config/nvim";
   programs.neovim = {
     enable = true;

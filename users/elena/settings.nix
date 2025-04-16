@@ -1,9 +1,9 @@
-{ config, lib, hostname, ... }:{
+{ config, lib, hostName, ... }:{
 options = {
   userapps.enable = lib.mkEnableOption "";
   userapps.host = lib.mkOption {
     Type = types.str;
-    default = "${hostname}";
+    default = "${hostName}";
   };
 };
 config = lib.mkIf config.userapps.enable (lib.mkMerge [

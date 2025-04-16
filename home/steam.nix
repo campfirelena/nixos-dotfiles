@@ -1,9 +1,9 @@
 { config, lib, pkgs, inputs, ... }:
 {
 options = {
-  steam.enable = mkEnableOption "";
+  home.steam.enable = mkEnableOption "";
 };
-config = lib.mkIf config.spicetify.enable {
+config = lib.mkIf config.home.spicetify.enable {
   programs.gamemode.enable = true;
   programs.gamescope.enable = true;
   programs.steam = {

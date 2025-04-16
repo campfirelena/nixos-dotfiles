@@ -1,8 +1,8 @@
 {lib, config, pkgs, ...}:{
 options = {
-  firefox.enable = lib.mkEnableOption "";
+  home.firefox.enable = lib.mkEnableOption "";
 };
-config = lib.mkIf config.firefox.enable {
+config = lib.mkIf config.home.firefox.enable {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;

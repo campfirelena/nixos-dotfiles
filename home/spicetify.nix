@@ -4,9 +4,9 @@ let
 in
 {
 options = {
-  spicetify.enable = mkEnableOption "";
+  home.spicetify.enable = mkEnableOption "";
 };
-config = lib.mkIf config.spicetify.enable {
+config = lib.mkIf config.home.spicetify.enable {
   imports = [ inputs.spicetify-nix.homeManagerModules.default ];
 
   home.packages = [

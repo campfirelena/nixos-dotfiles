@@ -4,7 +4,7 @@ options = {
   immich.enable = lib.mkEnableOption "";
 };
 config = lib.mkIf config.immich.enable {
-  services.immich.enable = true
+  services.immich.enable = true;
   hardware.graphics = {
     enable = true;
     extraPackages = with pkgs; [

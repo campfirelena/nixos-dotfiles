@@ -18,6 +18,7 @@
 
   outputs = {self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, ... }@inputs:
   let
+    inherit (self) outputs;
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in
@@ -39,14 +40,14 @@
     );
 
     homeConfigurations = with pkgs.lib; concatMapAttrs (
-      hostname:usernames: builtins.listToAttrs(
+      hostName:usernames: builtins.listToAttrs(
         map (username: {
-            name = username + "@" hostname;
+            name = username + "@" hostName;
             value = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
                 extraSpecialArgs = inputs // {
                     inherit inputs;
-                    inherit username hostname;
+                    inherit username hostName;
                 };
                 modules = [ 
 		              ./users/${username}/home.nix
@@ -76,8 +77,8 @@
       flake-home-manager = home-manager.nixosModules.home-manager;
       home-manager-extra = {
 	      home-manager = {
-	        extraSpecialArgs = inputs // { inherit inputs; };
-	        #sharedModules = attrsets.attrValues self.homeModules;
+	        extraSpecialArgs = { inherit inputs outputs; };
+	        sharedModules = attrsets.attrValues self.homeModules;
 	      };
 	    };
     };
