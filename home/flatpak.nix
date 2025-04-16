@@ -3,18 +3,12 @@
 options = {
   flatpak.enable = lib.mkEnableOption "";
   flatpak.packages = lib.mkOption {
-    Type = types.list;
+    Type = types.listOf str;
     default = [];
   };
 };
-config = lib.mkIf config.flatpak.enable (lib.mkMerge [
-  (lib.mkIf (config.userapps.host == "gaming") {
-    flatpak.packages = [
-      "org.vinegarhq.Sober"
-      "org.prismlauncher.PrismLauncher"
-    ];
-  })
-  {systemd.services.flatpak-management = {
+config = lib.mkIf config.flatpak.enable {
+  systemd.services.flatpak-management = {
     description = "Manage Flatpak installations";
     serviceConfig = {
       Type = "oneshot";
@@ -58,6 +52,5 @@ config = lib.mkIf config.flatpak.enable (lib.mkMerge [
     };
     wantedBy = ["timers.target"];
   };
-  }
-  ])
+};
 }
