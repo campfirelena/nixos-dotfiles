@@ -11,7 +11,7 @@
   grocy.enable = true;
   home-manager.enable = true;
   hyprland.enable = false;
-  immich.enavle = true;
+  immich.enable = true;
   jellyfin.enable = true;
   nix.enable = true;
   rivalcfg.enable = false;

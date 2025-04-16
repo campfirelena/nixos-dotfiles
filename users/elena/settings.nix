@@ -7,7 +7,7 @@ options = {
   };
 };
 config = lib.mkIf config.userapps.enable (lib.mkMerge [
-  (lib.mkIf (userapps.host == "server") {
+  (lib.mkIf (config.userapps.host == "server") {
     autorandr.enable = false;
     awesome.enable = false;
     bash.enable = true;
@@ -21,12 +21,12 @@ config = lib.mkIf config.userapps.enable (lib.mkMerge [
     steam.enable = false;
     stylix.enable = false;
   })
-  (lib.mkIf (userapps.host == "desktop") {
+  (lib.mkIf (config.userapps.host == "desktop") {
     autorandr.enable = true;
     awesome.enable = true;
     bash.enable = true;
     firefox.enable = true;
-    flatpak.enable = false
+    flatpak.enable = false;
     kitty.enable = true;
     modman.enable = false;
     neovim.enable = true;
@@ -35,7 +35,7 @@ config = lib.mkIf config.userapps.enable (lib.mkMerge [
     steam.enable = false;
     stylix.enable = true;
   })
-  (lib.mkIf (userapps.host == "gaming") {
+  (lib.mkIf (config.userapps.host == "gaming") {
     autorandr.enable = true;
     awesome.enable = true;
     bash.enable = true;
@@ -47,7 +47,7 @@ config = lib.mkIf config.userapps.enable (lib.mkMerge [
     obsidian.enable = false;
     spicetify.enable = true;
     steam.enable = true;
-    stylix.enable = true;;
+    stylix.enable = true;
   })
 ]);
 }
