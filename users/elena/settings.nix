@@ -1,67 +1,67 @@
-{ config, lib, hostName, ... }:{
+{ config, lib, hostName, inputs, ... }:{
 options = {
   userapps.enable = lib.mkEnableOption "";
   userapps.host = lib.mkOption {
-    Type = types.str;
-    default = "${hostName}";
+    type = lib.types.str;
+    default = "gaming";
   };
 };
 config = lib.mkIf config.userapps.enable (lib.mkMerge [
   (lib.mkIf (config.userapps.host == "server") {
-    autorandr.enable = false;
-    awesome.enable = false;
-    bash.enable = true;
-    firefox.enable = false;
-    flatpak.enable = false;
-    kitty.enable = false;
-    modman.enable = false;
-    neovim.enable = false;
-    obsidian.enable = false;
-    spicetify.enable = false;
-    steam.enable = false;
-    stylix.enable = false;
+    home.autorandr.enable = false;
+    home.awesome.enable = false;
+    home.bash.enable = true;
+    home.firefox.enable = false;
+    home.flatpak.enable = false;
+    home.kitty.enable = false;
+    home.modman.enable = false;
+    home.neovim.enable = false;
+    home.obsidian.enable = false;
+    home.spicetify.enable = false;
+    home.steam.enable = false;
+    home.stylix.enable = false;
   })
   (lib.mkIf (config.userapps.host == "desktop") {
-    autorandr.enable = true;
-    awesome.enable = true;
-    bash.enable = true;
-    firefox.enable = true;
-    flatpak.enable = false;
-    kitty.enable = true;
-    modman.enable = false;
-    neovim.enable = true;
-    obsidian.enable = true;
-    spicetify.enable = true;
-    steam.enable = false;
-    stylix.enable = true;
+    home.autorandr.enable = true;
+    home.awesome.enable = true;
+    home.bash.enable = true;
+    home.firefox.enable = true;
+    home.flatpak.enable = false;
+    home.kitty.enable = true;
+    home.modman.enable = false;
+    home.neovim.enable = true;
+    home.obsidian.enable = true;
+    home.spicetify.enable = true;
+    home.steam.enable = false;
+    home.stylix.enable = true;
   })
   (lib.mkIf (config.userapps.host == "gaming") {
-    autorandr.enable = true;
-    awesome.enable = true;
-    bash.enable = true;
-    firefox.enable = true;
-    flatpak.enable = true;
-    kitty.enable = true;
-    modman.enable = true;
-    neovim.enable = true;
-    obsidian.enable = false;
-    spicetify.enable = true;
-    steam.enable = true;
-    stylix.enable = true;
+    home.autorandr.enable = true;
+    home.awesome.enable = true;
+    home.bash.enable = true;
+    home.firefox.enable = true;
+    home.flatpak.enable = true;
+    home.kitty.enable = true;
+    home.modman.enable = true;
+    home.neovim.enable = true;
+    home.obsidian.enable = false;
+    home.spicetify.enable = true;
+    home.steam.enable = true;
+    home.stylix.enable = true;
   })
   (lib.mkIf (config.userapps.host == "testing") {
-    autorandr.enable = false;
-    awesome.enable = false;
-    bash.enable = true;
-    firefox.enable = false;
-    flatpak.enable = false;
-    kitty.enable = false;
-    modman.enable = false;
-    neovim.enable = false;
-    obsidian.enable = false;
-    spicetify.enable = false;
-    steam.enable = false;
-    stylix.enable = false;
+    home.autorandr.enable = false;
+    home.awesome.enable = false;
+    home.bash.enable = true;
+    home.firefox.enable = false;
+    home.flatpak.enable = false;
+    home.kitty.enable = false;
+    home.modman.enable = false;
+    home.neovim.enable = false;
+    home.obsidian.enable = false;
+    home.spicetify.enable = false;
+    home.steam.enable = false;
+    home.stylix.enable = false;
   })
 ]);
 }

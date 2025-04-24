@@ -1,7 +1,7 @@
 { config, lib, pkgs, inputs, ... }:
 {
 options = {
-  home.steam.enable = mkEnableOption "";
+  home.steam.enable = lib.mkEnableOption "";
 };
 config = lib.mkIf config.home.spicetify.enable {
   programs.gamemode.enable = true;

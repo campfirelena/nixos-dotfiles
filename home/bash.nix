@@ -1,8 +1,8 @@
-{ config, lib, ... }:{
+{ config, lib, pkgs, ... }:{
 options = {
-  home.bash.enable = lib.mkEnableOption "";
+  homeModule.bash.enable = lib.mkEnableOption "";
 };
-config = lib.mkIf config.home.bash.enable {
+config = lib.mkIf config.homeModule.bash.enable {
   programs.bash = {
     enable = true;
     shellAliases = {

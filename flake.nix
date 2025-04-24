@@ -30,7 +30,7 @@
             nixosConfiguration: with pkgs.lib; {
                 name = removeSuffix ".nix" nixosConfiguration;
                 value = nixpkgs.lib.nixosSystem {
-                    specialArgs = inputs // { inherit inputs; };
+                    specialArgs = { inherit inputs outputs; };
                     modules = [
                         (./hosts + ("/" + nixosConfiguration)) # Uses the name that nixosConfiguration is focusing on
                     ] ++ attrsets.attrValues self.nixosModules;
@@ -46,8 +46,8 @@
             value = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
                 extraSpecialArgs = inputs // {
-                    inherit inputs;
-                    inherit username hostName;
+                    inherit inputs outputs;
+                    inherit hostName;
                 };
                 modules = [ 
 		              ./users/${username}/home.nix
@@ -67,8 +67,7 @@
     # Imports all user-based modules as homeModules into home manager
     homeModules = with pkgs.lib; attrsets.mapAttrs' (
       name: _:
-      attrsets.nameValuePair (removeSuffix ".nix" name) (import (./home + ("/" + name))) ( builtins.readDir ./home)
-    );
+      attrsets.nameValuePair (removeSuffix ".nix" name) (import (./home + ("/" + name)))) ( builtins.readDir ./home);
 
     # Imports all system-based modules as nixosModules
     nixosModules = with pkgs.lib; attrsets.mapAttrs' (

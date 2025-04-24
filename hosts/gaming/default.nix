@@ -3,7 +3,7 @@
 { 
   imports = [
     ./hardware-configuration.nix
-  ];
+  ] ++ map( moduleFile: ../../users + ( "/" + moduleFile)) (builtins.attrNames (builtins.readDir ../../users));
   
   # Selecting what root modules to run
 
@@ -11,7 +11,7 @@
   grocy.enable = false;
   home-manager.enable = false;
   hyprland.enable = false;
-  immich.enavle = false;
+  immich.enable = false;
   jellyfin.enable = false;
   nixconfig.enable = true;
   rivalcfg.enable = true;

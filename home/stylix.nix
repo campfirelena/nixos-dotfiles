@@ -1,8 +1,8 @@
-{ config, lib, ... }:{
+{ config, lib, pkgs, ... }:{
 options = {
   home.stylix.enable = lib.mkEnableOption "";
 };
-config = mkIf config.home.stylix.enable {
+config = lib.mkIf config.home.stylix.enable {
   stylix = {
     enable = true;
     polarity = "dark"; # Screw light mode lol

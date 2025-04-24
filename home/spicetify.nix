@@ -1,10 +1,10 @@
-{ inputs, pkgs, config, ...}:
+{ inputs, pkgs, config, lib, ...}:
 let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in
 {
 options = {
-  home.spicetify.enable = mkEnableOption "";
+  home.spicetify.enable = lib.mkEnableOption "";
 };
 config = lib.mkIf config.home.spicetify.enable {
   imports = [ inputs.spicetify-nix.homeManagerModules.default ];
