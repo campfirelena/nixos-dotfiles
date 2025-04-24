@@ -64,11 +64,6 @@
 	    nameValuePair hostName (attrNames (builtins.readDir ./users))) (builtins.readDir ./hosts)
     );
 
-    # Imports all user-based modules as homeModules into home manager
-    homeModules = with pkgs.lib; attrsets.mapAttrs' (
-      name: _:
-      attrsets.nameValuePair (removeSuffix ".nix" name) (import (./home + ("/" + name)))) ( builtins.readDir ./home);
-
     # Imports all system-based modules as nixosModules
     nixosModules = with pkgs.lib; attrsets.mapAttrs' (
       name: _:
@@ -82,5 +77,9 @@
 	      };
 	    };
     };
-  };
+     # Imports all user-based modules as homeModules into home manager
+    homeModules = with pkgs.lib; attrsets.mapAttrs' (
+      name: _:
+      attrsets.nameValuePair (removeSuffix ".nix" name) (import (./home + ("/" + name)))) ( builtins.readDir ./home);
+ };
 }
