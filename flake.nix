@@ -51,6 +51,7 @@
                 };
                 modules = [ 
 		              ./users/${username}/home.nix
+                  ./users/${username}/settings.nix
 		              ./modules/home-manager.nix
 		            ] ++ attrsets.attrValues self.homeModules;
             };
