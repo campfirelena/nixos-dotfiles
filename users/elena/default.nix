@@ -1,6 +1,6 @@
 { config, lib, ... }:{
 imports = [
- # ./settings.nix
+  ./settings.nix
 ];
 
 #userapps.enable = true;

@@ -1,8 +1,5 @@
 { pkgs, hostname, lib, ... }:
 {
-
-  homeModule.bash.enable = true;
-
   home = {
     username = "elena";
     stateVersion = "24.11";
