@@ -1,10 +1,13 @@
-return{
-	"tiagovla/tokyodark.nvim",
-    opts = {
-        -- custom options here
-    },
-    config = function(_, opts)
-      require("tokyodark").setup(opts) -- calling setup is optional
-      vim.cmd [[colorscheme tokyodark]]
+local function enable_transparency()
+  vim.api.nvim_set_hl(0, "Normal", { bg = "None" })
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "None" })
+  vim.api.nvim_set_hl(0, "LineNr", { bg = "None" })
+end
+return {
+  {
+	"rebelot/kanagawa.nvim",
+    config = function()
+      vim.cmd.colorscheme "kanagawa"
     end,
+  },
 }

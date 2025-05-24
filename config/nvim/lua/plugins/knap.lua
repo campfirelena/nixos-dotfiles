@@ -1,3 +1,3 @@
 return{
-	{"frabjous/knap"}
+	{"frabjous/knap"} -- Preview LaTeX in browser
 }
