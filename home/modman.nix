@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:{
 options = {
-  home.modman.enable = lib.mkEnableOption "";
+  userModules.modman.enable = lib.mkEnableOption "";
 };
-config = lib.mkIf config.home.modman.enable {
-  environment.systemPackages = with pkgs; [
+config = lib.mkIf config.userModules.modman.enable {
+  home.packages = with pkgs; [
     r2modman
   ];
 };

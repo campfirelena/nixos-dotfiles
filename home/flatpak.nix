@@ -1,13 +1,13 @@
 { config, pkgs, lib, ... }:
 {
 #options = {
-#  home.flatpak.enable = lib.mkEnableOption "";
-#  home.flatpak.packages = lib.mkOption {
+#  userModules.flatpak.enable = lib.mkEnableOption "";
+#  userModules.flatpak.packages = lib.mkOption {
 #    Type = types.listOf str;
 #    default = [];
 #  };
 #};
-#config = lib.mkIf config.home.flatpak.enable {
+#config = lib.mkIf config.userModules.flatpak.enable {
 #  systemd.services.flatpak-management = {
 #    description = "Manage Flatpak installations";
 #    serviceConfig = {

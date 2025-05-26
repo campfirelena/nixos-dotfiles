@@ -13,9 +13,10 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix.url = "github:nix-community/stylix";
   };
 
-  outputs = {self, nixpkgs, home-manager, hyprland, ... }@inputs:
+  outputs = {self, nixpkgs, home-manager, hyprland, spicetify-nix, ... }@inputs:
   let
     inherit (self) outputs;
     system = "x86_64-linux";

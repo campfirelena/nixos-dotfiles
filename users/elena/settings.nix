@@ -19,7 +19,6 @@ config = lib.mkIf config.userapps.enable (lib.mkMerge [
     obsidian.enable = false;
     spicetify.enable = false;
     steam.enable = false;
-    stylix.enable = false;
   })
   (lib.mkIf (config.userapps.host == "desktop") {
   imports = [ ../../home/autorandr.nix ];
@@ -34,7 +33,6 @@ config = lib.mkIf config.userapps.enable (lib.mkMerge [
     obsidian.enable = true;
     spicetify.enable = true;
     steam.enable = false;
-    stylix.enable = true;
   })
   (lib.mkIf (config.userapps.host == "gaming") {
     autorandr.enable = true;
@@ -48,7 +46,6 @@ config = lib.mkIf config.userapps.enable (lib.mkMerge [
     obsidian.enable = false;
     spicetify.enable = true;
     steam.enable = true;
-    stylix.enable = true;
   })
   (lib.mkIf (config.userapps.host == "testing") {
     autorandr.enable = false;
@@ -62,7 +59,6 @@ config = lib.mkIf config.userapps.enable (lib.mkMerge [
     obsidian.enable = false;
     spicetify.enable = false;
     steam.enable = false;
-    stylix.enable = false;
   })
 ]);
 }

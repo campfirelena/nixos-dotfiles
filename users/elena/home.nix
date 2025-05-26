@@ -31,4 +31,10 @@
     allowUnfree = true;
     allowUnfreePredicate = _: true;
   };
+
+  userModules = {
+    kitty.enable = true;
+    spicetify.enable = true;
+    neovim.enable = true;
+  };
 }

@@ -1,8 +1,8 @@
 { pkgs, config, lib, ... }:{
 options = {
-  awesome.enable = lib.mkEnableOption "";
+  userModules.awesome.enable = lib.mkEnableOption "";
 };
-config = lib.mkIf config.awesome.enable {
+config = lib.mkIf config.userModules.awesome.enable {
   home.file.".config/awesome".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-dotfiles/config/awesome";
 };
 }

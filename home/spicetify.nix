@@ -1,21 +1,7 @@
 { inputs, pkgs, config, lib, ...}:
 let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
-in
-{
-options = {
-  home.spicetify.enable = lib.mkEnableOption "";
-};
-config = lib.mkIf config.home.spicetify.enable {
-  imports = [ inputs.spicetify-nix.homeManagerModules.default ];
-
-  home.packages = [
-    pkgs.spotify-cli-linux
-  ];
-
-  programs.spicetify = 
-      {
-    enable = true;
+  spicetify = inputs.spicetify-nix.lib.mkSpicetify pkgs {
     theme = spicePkgs.themes.starryNight;
     colorScheme = "Galaxy";
     enabledCustomApps = with spicePkgs.apps; [
@@ -24,11 +10,21 @@ config = lib.mkIf config.home.spicetify.enable {
       fullAppDisplay
       shuffle
       hidePodcasts
-      adblock
+      adblockify
       playNext
       volumePercentage
     ];
   };
+in
+{
+options = {
+  userModules.spicetify.enable = lib.mkEnableOption "";
+};
+config = lib.mkIf config.userModules.spicetify.enable {
+
+  home.packages = [
+    spicetify
+  ];
 
   xdg.desktopEntries = {
     spotify = {

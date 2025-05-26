@@ -1,9 +1,9 @@
 { config, lib, pkgs , ... }:{
 options = {
-  home.obsidian.enable = lib.mkEnableOption "";
+  userModules.obsidian.enable = lib.mkEnableOption "";
 };
-config = lib.mkIf config.home.obsidian.enable {
-  environment.systemPackages = with pkgs; [
+config = lib.mkIf config.userModules.obsidian.enable {
+  home.packages = with pkgs; [
     obsidian
   ];
 };

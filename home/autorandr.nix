@@ -1,8 +1,8 @@
 { config, lib, ... }:{
 options = {
-  autorandr.enable = lib.mkEnableOption "";
+  userModules.autorandr.enable = lib.mkEnableOption "";
 };
-config = lib.mkIf config.autorandr.enable {
+config = lib.mkIf config.userModules.autorandr.enable {
   programs.autorandr = {
     enable = true;
   };

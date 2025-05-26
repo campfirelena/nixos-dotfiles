@@ -1,15 +1,14 @@
-{ config, lib, pkgs, modulesPath, inputs, username, ... }:
+{ config, lib, pkgs, ... }:
 
 { 
   imports = [
     ./hardware-configuration.nix
-  ] ++ map( moduleFile: ../../users + ( "/" + moduleFile)) (builtins.attrNames (builtins.readDir ../../users));
+  ] ++ map ( moduleFile: ../../users + ( "/" + moduleFile)) (builtins.attrNames (builtins.readDir ../../users));
   
   # Selecting what root modules to run
 
   awesomewm.enable = true;
   grocy.enable = false;
-  home-manager.enable = false;
   hyprland.enable = false;
   immich.enable = false;
   jellyfin.enable = false;
