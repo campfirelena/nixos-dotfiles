@@ -47,7 +47,7 @@
                 inherit pkgs;
                 extraSpecialArgs = inputs // {
                     inherit inputs outputs;
-                    inherit hostName;
+                    inherit (config.networking) hostName;
                 };
                 modules = [ 
 		              ./users/${username}/home.nix
