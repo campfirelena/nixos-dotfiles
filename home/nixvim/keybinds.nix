@@ -5,6 +5,6 @@ programs.nixvim = {
         action = "<C-w>j";
         mode = "n";
         options.desc = "Window down";
-    ]
-}
+    ];
+};
 }

@@ -22,5 +22,5 @@ programs.nixvim = {
 
         nvim-tree.enable = true;
     };
-}
+};
 }

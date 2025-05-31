@@ -3,6 +3,7 @@
 { 
   imports = [
     ./hardware-configuration.nix
+    ../common
   ] ++ map ( moduleFile: ../../users + ( "/" + moduleFile)) (builtins.attrNames (builtins.readDir ../../users));
   
   # Selecting what root modules to run
@@ -41,6 +42,8 @@
     git
     curl
   ];
+
+
 
   # DEFAULTS
 

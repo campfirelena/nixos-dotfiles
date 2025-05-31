@@ -25,5 +25,8 @@ config = lib.mkIf config.awesomewm.enable {
       ];
     };
   };
+  environment.systemPackages = with pkgs; [
+    rofi
+  ];
 };
 }

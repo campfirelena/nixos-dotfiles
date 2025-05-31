@@ -2,6 +2,7 @@
 
 { 
   imports = [
+    ../common
     ./hardware-configuration.nix
   ] ++ map( moduleFile: ../../users + ( "/" + moduleFile)) (builtins.attrNames (builtins.readDir ../../users));
 

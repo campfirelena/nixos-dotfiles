@@ -8,8 +8,8 @@ config = lib.mkIf config.userModules.firefox.enable {
     package = pkgs.firefox;
     # Input about:config options
     profiles.elena = {
-      "browser.tabs.closeTabByDblClick" = true;
-      "sidebar.verticalTabs" = true;
+#      "browser.tabs.closeTabByDblClick" = true;
+#      "sidebar.verticalTabs" = true;
     };
   };
 };

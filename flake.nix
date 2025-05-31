@@ -14,9 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix.url = "github:nix-community/stylix";
+    flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/stable-v3";
+    nixvim.url = "github:nix-community/nixvim";
   };
 
-  outputs = {self, nixpkgs, home-manager, hyprland, spicetify-nix, ... }@inputs:
+  outputs = {self, nixpkgs, home-manager, hyprland, spicetify-nix, flatpaks, nixvim, ... }@inputs:
   let
     inherit (self) outputs;
     system = "x86_64-linux";
@@ -50,6 +52,8 @@
                     inherit (config.networking) hostName;
                 };
                 modules = [ 
+                  flatpaks.homeManagerModules.declarative-flatpak
+                  nixvim.homeManagerModules.nixvim
 		              ./users/${username}/home.nix
 		            ] ++ attrsets.attrValues self.homeModules;
             };

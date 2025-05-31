@@ -7,6 +7,7 @@ config = lib.mkIf config.userModules.bash.enable {
     enable = true;
     shellAliases = {
       nrs = "sudo nixos-rebuild switch --flake .";
+      nrt = "sudo nixos-rebuild test --flake .";
       btw = "echo I use nixos btw";
     };
     initExtra = ''
@@ -14,8 +15,6 @@ config = lib.mkIf config.userModules.bash.enable {
       fastfetch
     '';
     enableCompletion = true;
-    sessionVariables = ''
-    '';
   };
   home.packages = with pkgs; [
     bat

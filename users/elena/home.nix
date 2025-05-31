@@ -1,4 +1,4 @@
-{ pkgs, hostname, lib, ... }:
+{ pkgs, hostName, lib, ... }:
 {
   home = {
     username = "elena";
@@ -22,6 +22,7 @@
     unzip
     keepassxc
     bitwarden
+    vesktop
     ];
 
   # Allow home manager to download itself if needed
@@ -33,8 +34,22 @@
   };
 
   userModules = {
+    autorandr.enable = true;
+    awesome.enable = true;
+    bash.enable = true;
+    firefox.enable = true;
+    flatpak = {
+      enable = true;
+      packages = [
+        "flathub:app/org.vinegarhq.Sober//stable"
+        "flathub:app/org.prismlauncher.PrismLauncher//stable"
+      ];
+    };
     kitty.enable = true;
-    spicetify.enable = true;
+    modman.enable = false;
     neovim.enable = true;
+    obsidian.enable = true;
+    spicetify.enable = true;
+    steam.enable = false;
   };
 }
