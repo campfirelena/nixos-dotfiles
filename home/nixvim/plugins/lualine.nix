@@ -1,7 +1,6 @@
 { ... }:{
 programs.nixvim = {
-    plugins = {
-        lualine = { 
+    plugins.lualine = { 
             enable = true;
             settings = {
                 settings.options:disabled_filetypes = 
@@ -18,9 +17,6 @@ programs.nixvim = {
                     winbar = disabled;
                 };
             };
-        };
-
-        nvim-tree.enable = true;
     };
 };
 }
