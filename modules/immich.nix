@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 {
 options = {
-  immich.enable = lib.mkEnableOption "";
+  systemModules.immich.enable = lib.mkEnableOption "";
 };
-config = lib.mkIf config.immich.enable {
+config = lib.mkIf config.systemModules.immich.enable {
   services.immich.enable = true;
   hardware.graphics = {
     enable = true;

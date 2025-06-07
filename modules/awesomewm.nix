@@ -1,8 +1,8 @@
 { config, nixpkgs, pkgs, lib, ... }:{
 options = {
-  awesomewm.enable = lib.mkEnableOption "";
+  systemModules.awesomewm.enable = lib.mkEnableOption "";
 };
-config = lib.mkIf config.awesomewm.enable {
+config = lib.mkIf config.systemModules.awesomewm.enable {
   services.xserver = {
     enable = true;
     displayManager.defaultSession = "default";

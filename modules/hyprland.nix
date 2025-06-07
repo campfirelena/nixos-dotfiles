@@ -1,9 +1,9 @@
 { config, lib, ... }:
 {
 options = {
-  hyprland.enable = lib.mkEnableOption "";
+  systemModules.hyprland.enable = lib.mkEnableOption "";
 };
-config = lib.mkIf config.hyprland.enable {
+config = lib.mkIf config.systemModules.hyprland.enable {
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
