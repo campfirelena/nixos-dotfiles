@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 {
 options = {
-  jellyfin.enable = lib.mkEnableOption "";
+  systemModules.jellyfin.enable = lib.mkEnableOption "";
 };
-config = lib.mkIf config.jellyfin.enable {
+config = lib.mkIf config.systemModules.jellyfin.enable {
   services.jellyfin.enable = true;
   environment.systemPackages = with pkgs; [
     jellyfin

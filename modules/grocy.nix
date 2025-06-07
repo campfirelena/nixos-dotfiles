@@ -1,8 +1,8 @@
 { config, lib, ... }:{
   options = {
-    grocy.enable = lib.mkEnableOption "";
+    systemModules.grocy.enable = lib.mkEnableOption "";
   };
-  config = lib.mkIf config.grocy.enable {
+  config = lib.mkIf config.systemModules.grocy.enable {
     services.grocy = {
       enable = true;
       settings = {
