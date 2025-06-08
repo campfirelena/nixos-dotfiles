@@ -5,6 +5,7 @@ options = {
 config = lib.mkIf config.systemModules.awesomewm.enable {
   services.xserver = {
     enable = true;
+    videoDrivers = [ "nvidia" ];
     displayManager.defaultSession = "default";
     displayManager.session = [
       {
@@ -28,5 +29,13 @@ config = lib.mkIf config.systemModules.awesomewm.enable {
   environment.systemPackages = with pkgs; [
     rofi
   ];
+  hardware.graphics.enable = true;
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
+    open = false;
+    nvidiaSettings = true;
+  };
 };
 }
