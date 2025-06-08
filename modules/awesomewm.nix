@@ -31,7 +31,7 @@ config = lib.mkIf config.awesomewm.enable {
   ];
   hardware.graphics.enable = true;
   hardware.nvidia = {
-    modesettings.enable = true;
+    modesetting.enable = true;
     powerManagement.enable = false;
     powerManagement.finegrained = false;
     open = false;
