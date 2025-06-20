@@ -8,6 +8,7 @@
   
   # Selecting what root modules to run
 
+systemModules = {
   awesomewm.enable = true;
   grocy.enable = false;
   hyprland.enable = false;
@@ -15,6 +16,7 @@
   jellyfin.enable = false;
   nixconfig.enable = true;
   rivalcfg.enable = false;
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -38,7 +40,6 @@
   #services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   environment.systemPackages = with pkgs; [
-    neovim
     git
     curl
   ];

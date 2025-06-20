@@ -12,6 +12,4 @@ users.users.elena = {
   extraGroups = [ "wheel" ];
   hashedPassword = "$6$o3/yQmjlVubKtVZD$TAdbP60Jc16ltN7kzl.klX5g.vpB5RNwyZMdg6qvTHdcB1mHsNnNfKuWJp.laPfvpR4eZLsy1TKA0oTox24PD.";
 };
-
-home-manager.users.elena.imports = [./home.nix inputs.flatpaks.homeManagerModules.declarative-flatpak ];
 }
