@@ -8,17 +8,24 @@ config = lib.mkIf config.userModules.bash.enable {
     shellAliases = {
       nrs = "sudo nixos-rebuild switch --flake .";
       nrt = "sudo nixos-rebuild test --flake .";
-      btw = "echo I use nixos btw";
+      vi = "nvim";
+      svi = "sudo vi";
+      ping = "ping -c 10";
+      cls = "clear";
+      cp = "cp -i";
+      mv = "mv -i";
+      mkdir = "mkdir -p";
     };
     initExtra = ''
-      export PS1='\[\e[95;1m\]\u\[\e[0m\] in \[\e[96m\]\W\[\e[0m\] > '
       fastfetch
+      eval "$(starship init bash)"
     '';
     enableCompletion = true;
   };
   home.packages = with pkgs; [
     bat
     fastfetch
+    starship
   ];
 };
 }

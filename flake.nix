@@ -43,7 +43,7 @@
     );
 
     homeConfigurations = with pkgs.lib; concatMapAttrs (
-      hostName:usernames: builtins.listToAttrs(
+      hostName: usernames: builtins.listToAttrs(
         map (username: {
             name = username + "@" hostName;
             value = home-manager.lib.homeManagerConfiguration {

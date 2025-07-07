@@ -50,10 +50,10 @@
       ];
     };
     kitty.enable = true;
-    modman.enable = false;
+    modman.enable = true;
     neovim.enable = true;
     obsidian.enable = true;
     spicetify.enable = true;
-    steam.enable = false;
+    steam.enable = true;
   };
 }
