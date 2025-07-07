@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 { pkgs, hostName, lib, inputs, ... }:
 {
   imports = [
     inputs.flatpaks.homeModule
+=======
+{ pkgs, hostName, lib, flatpaks, ... }:
+{
+  imports = [
+    flatpaks.homeModule
+>>>>>>> 9009e6060a353dee97ecbf99c41323d0085d659b
   ];
 
   home = {

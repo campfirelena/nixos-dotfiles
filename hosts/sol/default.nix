@@ -15,8 +15,13 @@ systemModules = {
   jellyfin.enable = false;
   niri.enable = true;
   nixconfig.enable = true;
+<<<<<<< HEAD:hosts/sol/default.nix
   rivalcfg.enable = true;
 };
+=======
+  rivalcfg.enable = false;
+  };
+>>>>>>> 9009e6060a353dee97ecbf99c41323d0085d659b:hosts/desktop/default.nix
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
