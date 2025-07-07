@@ -1,5 +1,9 @@
-{ pkgs, hostName, lib, ... }:
+{ pkgs, hostName, lib, inputs, ... }:
 {
+  imports = [
+    inputs.flatpaks.homeModule
+  ];
+
   home = {
     username = "elena";
     stateVersion = "24.11";

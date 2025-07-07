@@ -7,7 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     #disko.url = "github:nix-community/disko";
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
@@ -15,10 +14,11 @@
     };
     stylix.url = "github:nix-community/stylix";
     flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/stable-v3";
-    nixvim.url = "github:nix-community/nixvim";
+    nixvim.url = "github:campfirelena/nixvim";
+    niri.url = "github:sodiboo/niri-flake";
   };
 
-  outputs = {self, nixpkgs, home-manager, hyprland, spicetify-nix, flatpaks, nixvim, ... }@inputs:
+  outputs = {self, nixpkgs, home-manager, spicetify-nix, flatpaks, nixvim, niri, ... }@inputs:
   let
     inherit (self) outputs;
     system = "x86_64-linux";
@@ -34,6 +34,7 @@
                 value = nixpkgs.lib.nixosSystem {
                     specialArgs = { inherit inputs outputs; };
                     modules = [
+                      niri.nixosModules.niri
                         (./hosts + ("/" + nixosConfiguration)) # Uses the name that nixosConfiguration is focusing on
                     ] ++ attrsets.attrValues self.nixosModules;
                 };
@@ -51,9 +52,7 @@
                     inherit inputs outputs;
                     inherit (config.networking) hostName;
                 };
-                modules = [ 
-                  flatpaks.homeManagerModules.declarative-flatpak
-                  nixvim.homeManagerModules.nixvim
+                modules = [
 		              ./users/${username}/home.nix
 		            ] ++ attrsets.attrValues self.homeModules;
             };

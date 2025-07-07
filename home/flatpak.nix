@@ -11,7 +11,7 @@ options = {
 };
 config = lib.mkIf config.userModules.flatpak.enable {
   services.flatpak = {
-    enableModule = true;
+    enable = true;
     remotes = {
       "flathub" = "https://dl.flathub.org/repo/flathub.flatpakrepo";
     };

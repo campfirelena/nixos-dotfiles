@@ -1,6 +1,6 @@
 { pkgs, config, lib, ... }:{
 options = {
-  systemModules.kanata = lib.mkEnableOption "";
+  systemModules.kanata.enable = lib.mkEnableOption "";
 };
 config = lib.mkIf config.systemModules.kanata.enable {
   services.kanata = {
