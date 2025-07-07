@@ -52,7 +52,7 @@
                     inherit (config.networking) hostName;
                 };
                 modules = [ 
-                  flatpaks.homeManagerModules.declarative-flatpak
+                  flatpaks.homeModule.declarative-flatpak
                   nixvim.homeManagerModules.nixvim
 		              ./users/${username}/home.nix
 		            ] ++ attrsets.attrValues self.homeModules;
