@@ -12,9 +12,6 @@ users.users.elena = {
   extraGroups = [ "wheel" ];
   hashedPassword = "$6$o3/yQmjlVubKtVZD$TAdbP60Jc16ltN7kzl.klX5g.vpB5RNwyZMdg6qvTHdcB1mHsNnNfKuWJp.laPfvpR4eZLsy1TKA0oTox24PD.";
 };
-<<<<<<< HEAD
 
 home-manager.users.elena.imports = [ ./home.nix ];
-=======
->>>>>>> 9009e6060a353dee97ecbf99c41323d0085d659b
 }

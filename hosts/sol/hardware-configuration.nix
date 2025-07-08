@@ -19,7 +19,7 @@
     };
 
   fileSystems."/data" =
-    { device = "/dev/disk/by-uuid/3A35-F4D9";
+    { device = "/dev/disk/by-uuid/d9264c43-e046-4a32-acf4-7d89b01be96f";
       fsType = "ext4";
     };
 

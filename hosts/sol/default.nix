@@ -11,17 +11,12 @@
 systemModules = {
   awesomewm.enable = true;
   grocy.enable = false;
-  immich.enable = false;
+  immich.enable = true;
   jellyfin.enable = false;
-  niri.enable = true;
+  niri.enable = false;
   nixconfig.enable = true;
-<<<<<<< HEAD:hosts/sol/default.nix
   rivalcfg.enable = true;
 };
-=======
-  rivalcfg.enable = false;
-  };
->>>>>>> 9009e6060a353dee97ecbf99c41323d0085d659b:hosts/desktop/default.nix
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -47,6 +42,7 @@ systemModules = {
   environment.systemPackages = with pkgs; [
     git
     curl
+    nh
   ];
 
 
@@ -64,9 +60,9 @@ systemModules = {
   services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  networking.firewall.enable = false;
+  networking.firewall.allowedTCPPorts = [ 2283 ];
+  networking.firewall.allowedUDPPorts = [ 2283 ];
+  networking.firewall.enable = true;
 
   # Only change when different iso version used
   # This defines what kind of file structure is used
