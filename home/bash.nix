@@ -28,18 +28,24 @@ config = lib.mkIf config.userModules.bash.enable {
   ];
     programs.starship = {
       enable = true;
-    settings = ''
-      add_newline = false
-      
-      [character]
-      success_symbol = '[➜](bold green)'
-
-      #format = ""
-    ''
-      }
+    settings = {
+      add_newline = false;
+      format = "$nix_shell$git_status| $username@$hostname in $directory > ";
+        username = {
+          show_always = true;
+          style_user = "bold yellow";
+          format = "[$user]($style)";
+        };
+        hostname = {
+          ssh_only = false;
+          style = "bold green";
+          format = "[$ssh_symbol$hostname]($style)";
+        };
+    };
+      };
       programs.zoxide = {
         enable = true;
         enableBashIntegration = true;
-      }
+      };
 };
 }
