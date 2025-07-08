@@ -25,7 +25,21 @@ config = lib.mkIf config.userModules.bash.enable {
   home.packages = with pkgs; [
     bat
     fastfetch
-    starship
   ];
+    programs.starship = {
+      enable = true;
+    settings = ''
+      add_newline = false
+      
+      [character]
+      success_symbol = '[➜](bold green)'
+
+      #format = ""
+    ''
+      }
+      programs.zoxide = {
+        enable = true;
+        enableBashIntegration = true;
+      }
 };
 }
