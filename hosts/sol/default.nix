@@ -13,7 +13,7 @@ systemModules = {
   grocy.enable = false;
   immich.enable = true;
   jellyfin.enable = false;
-  niri.enable = false;
+  niri.enable = true;
   nixconfig.enable = true;
   rivalcfg.enable = true;
 };

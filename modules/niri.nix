@@ -7,6 +7,17 @@
       enable = true;
       package = pkgs.niri;
     };
+
+    environment.systemPackages = with pkgs; [
+      mako
+      swaybg
+    ];
+
+    services.displayManager.ly = {
+      enable = true;
+      x11Support = true;
+    };
+
     hardware.graphics.enable = true;
     hardware.nvidia = {
       modesetting.enable = true;
