@@ -44,20 +44,16 @@
       homeConfigurations = with pkgs.lib; concatMapAttrs (
         hostName: usernames: builtins.listToAttrs(
           map (username: {
-            name = username + "@" hostName;
+            name = "${username}@${hostName}";
             value = home-manager.lib.homeManagerConfiguration {
               inherit pkgs;
-              extraSpecialArgs = inputs // {
-                inherit inputs outputs;
-                inherit (config.networking) hostName;
-              };
+              extraSpecialArgs = {inherit inputs outputs;};
               modules = [
                 nixvim.homeManagerModules.nixvim
                 ./users/${username}/home.nix
               ];
             };
-          })
-          usernames
+          }) usernames
         )
       )
         ( mapAttrs'(

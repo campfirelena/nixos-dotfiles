@@ -4,7 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ../common
-  ] ++ map ( moduleFile: ../../users + ( "/" + moduleFile)) (builtins.attrNames (builtins.readDir ../../users));
+  ] ++ map ( user: ../../users + ( "/" + user)) (builtins.attrNames (builtins.readDir ../../users));
   
   # Selecting what root modules to run
 
@@ -43,6 +43,7 @@ systemModules = {
     git
     curl
     nh
+    home-manager
   ];
 
 

@@ -6,6 +6,8 @@
     ./modules/wayland/fuzzel.nix
   ] ++ (lib.filesystem.listFilesRecursive ./modules);
 
+  randomoptions = false;
+
   home = {
     username = "elena";
     stateVersion = "24.11";
@@ -28,6 +30,7 @@
     unzip
     bitwarden
     vesktop
+    fzf
     ];
 
   # Allow home manager to download itself if needed
