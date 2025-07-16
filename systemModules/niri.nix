@@ -11,6 +11,7 @@
     environment.systemPackages = with pkgs; [
       mako
       swaybg
+      fuzzel
     ];
 
     services.displayManager.ly = {

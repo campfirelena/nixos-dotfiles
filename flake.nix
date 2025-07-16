@@ -25,7 +25,7 @@
     pkgs = nixpkgs.legacyPackages.${system};
   in
 
-  # This part is heavily inspired by sebastianrasor's flake. Eventually I will change this to make it more different and as my own as possible.
+  # This part is inspired by sebastianrasor's flake.
   {
     nixosConfigurations = builtins.listToAttrs (
         map(
@@ -35,8 +35,9 @@
                     specialArgs = { inherit inputs outputs; };
                     modules = [
                       niri.nixosModules.niri
+                      home-manager.nixosModules.home-manager
                         (./hosts + ("/" + nixosConfiguration)) # Uses the name that nixosConfiguration is focusing on
-                    ] ++ attrsets.attrValues self.nixosModules;
+                    ]; 
                 };
             }
         ) (builtins.attrNames (builtins.readDir ./hosts)) # Reads the directory "hosts" and uses the folder names as attribute names
@@ -53,10 +54,12 @@
                     inherit (config.networking) hostName;
                 };
                 modules = [
-                  flatpaks.homeModule.declarative-flatpak
                   nixvim.homeManagerModules.nixvim
 		              ./users/${username}/home.nix
-		            ] ++ attrsets.attrValues self.homeModules;
+                ];
+                imports = [
+                  flatpaks.homeModule
+                ];
             };
         })
 	usernames
@@ -66,23 +69,13 @@
 	    hostName: _:
 	    nameValuePair hostName (attrNames (builtins.readDir ./users))) (builtins.readDir ./hosts)
     );
-
-    # Imports all system-based modules as nixosModules
-    nixosModules = with pkgs.lib; attrsets.mapAttrs' (
-      name: _:
-      attrsets.nameValuePair (removeSuffix ".nix" name) (import (./modules + ("/" + name)))) ( builtins.readDir ./modules)
-    // {
-      flake-home-manager = home-manager.nixosModules.home-manager;
-      home-manager-extra = {
-	      home-manager = {
-	        extraSpecialArgs = { inherit inputs outputs; };
-	        sharedModules = attrsets.attrValues self.homeModules;
-	      };
-	    };
-    };
-     # Imports all user-based modules as homeModules into home manager
-    homeModules = with pkgs.lib; attrsets.mapAttrs' (
-      name: _:
-      attrsets.nameValuePair (removeSuffix ".nix" name) (import (./home + ("/" + name)))) ( builtins.readDir ./home);
+      nixosModules = {
+        flake-home-manager = home-manager.nixosModules.home-manager;
+        home-manager-extra = {
+          home-manager = {
+            extraSpecialArgs = { inherit inputs outputs; };
+          };
+        };
+      };
  };
 }

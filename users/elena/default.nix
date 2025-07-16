@@ -1,9 +1,6 @@
 { config, lib, inputs, ... }:{
-imports = [
-#  ./settings.nix
-];
-
-#userapps.enable = true;
+  imports = [
+  ];
 
 users.users.elena = {
   isNormalUser = true;

@@ -1,8 +1,7 @@
 { pkgs, hostName, lib, inputs, ... }:
 {
   imports = [
-    inputs.flatpaks.homeModule
-  ];
+  ] ++ (lib.filesystem.listFilesRecursive ./modules);
 
   home = {
     username = "elena";
