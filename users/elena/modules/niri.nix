@@ -61,5 +61,8 @@
 
         #everything is maximised (not split into columns) FIX
       };
+  home.packages = [
+    pkgs.alacritty
+  ];
     };
 }

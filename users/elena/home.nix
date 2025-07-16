@@ -23,7 +23,6 @@
   # Essentials for every user
     btop
     unzip
-    keepassxc
     bitwarden
     vesktop
     ];
@@ -37,7 +36,6 @@
   };
 
   userModules = {
-    autorandr.enable = true;
     awesome.enable = true;
     bash.enable = true;
     firefox.enable = true;
@@ -53,7 +51,7 @@
     neovim.enable = true;
     niri.enable = true;
     obsidian.enable = true;
-    spicetify.enable = true;
+    spicetify.enable = false;
     steam.enable = true;
   };
 }
