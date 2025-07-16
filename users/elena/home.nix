@@ -1,6 +1,9 @@
 { pkgs, hostName, lib, inputs, ... }:
 {
   imports = [
+    ./modules/wayland/waybar.nix
+    ./modules/wayland/niri.nix
+    ./modules/wayland/fuzzel.nix
   ] ++ (lib.filesystem.listFilesRecursive ./modules);
 
   home = {
@@ -46,6 +49,7 @@
         "flathub:app/org.prismlauncher.PrismLauncher//stable"
       ];
     };
+    fuzzel.enable = true;
     kitty.enable = true;
     modman.enable = true;
     neovim.enable = true;

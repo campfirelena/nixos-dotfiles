@@ -5,18 +5,22 @@
   config = lib.mkIf config.systemModules.niri.enable {
     programs.niri = {
       enable = true;
-      package = pkgs.niri;
     };
 
     environment.systemPackages = with pkgs; [
       mako
       swaybg
-      fuzzel
+      swaylock
     ];
+
+    #fix electron BS
+    environment.variables = {
+      NIXOS_OZONE_WL = 1;
+      ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    };
 
     services.displayManager.ly = {
       enable = true;
-      x11Support = true;
     };
 
     hardware.graphics.enable = true;
