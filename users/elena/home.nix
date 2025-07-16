@@ -51,7 +51,8 @@
     neovim.enable = true;
     niri.enable = true;
     obsidian.enable = true;
-    spicetify.enable = false;
+    spicetify.enable = true;
     steam.enable = true;
+    waybar.enable = true;
   };
 }
