@@ -43,6 +43,7 @@ systemModules = {
     git
     curl
     nh
+    home-manager
   ];
 
 

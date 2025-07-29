@@ -1,12 +1,7 @@
 { pkgs, hostName, lib, inputs, ... }:
 {
   imports = [
-    ./modules/wayland/waybar.nix
-    ./modules/wayland/niri.nix
-    ./modules/wayland/fuzzel.nix
   ] ++ (lib.filesystem.listFilesRecursive ./modules);
-
-  randomoptions = false;
 
   home = {
     username = "elena";
