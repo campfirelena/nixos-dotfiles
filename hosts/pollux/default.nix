@@ -16,6 +16,7 @@ systemModules = {
   niri.enable = false;
   nixconfig.enable = true;
   rivalcfg.enable = true;
+  virt.enable = true;
 };
 
   # Use the systemd-boot EFI boot loader.

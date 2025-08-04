@@ -51,6 +51,7 @@
               extraSpecialArgs = inputs;
               modules = [
                 nixvim.homeManagerModules.nixvim
+                flatpaks.homeModule
                 ./users/${username}/home.nix
               ];
             };
@@ -64,7 +65,6 @@
     
     nixosModules = {
       flake-home-manager = home-manager.nixosModules.home-manager;
-      flake-flatpaks = flatpaks.nixosModule;
       home-manager-extra = {
         home-manager = {
           extraSpecialArgs = { inherit inputs outputs; };

@@ -27,6 +27,7 @@
     vesktop
     fzf
     onlyoffice-desktopeditors
+    p7zip
     ];
 
   # Allow home manager to download itself if needed
