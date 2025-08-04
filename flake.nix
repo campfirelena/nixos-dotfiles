@@ -36,7 +36,7 @@
                 home-manager.nixosModules.home-manager
                 niri.nixosModules.niri
                 (./hosts + ("/" + host)) # Uses the name that nixosConfiguration is focusing on
-              ]; 
+              ] ++ attrsets.attrValues self.nixosModules; 
             };
           }
         ) (builtins.attrNames (builtins.readDir ./hosts)) # Reads the directory "hosts" and uses the folder names as attribute names
@@ -48,7 +48,7 @@
             name = "${username}@${hostName}";
             value = home-manager.lib.homeManagerConfiguration {
               inherit pkgs;
-              extraSpecialArgs = {inherit inputs;};
+              extraSpecialArgs = inputs;
               modules = [
                 nixvim.homeManagerModules.nixvim
                 ./users/${username}/home.nix
@@ -61,5 +61,15 @@
           hostName: _:
           nameValuePair hostName (attrNames (builtins.readDir ./users))) (builtins.readDir ./hosts)
         );
+    
+    nixosModules = {
+      flake-home-manager = home-manager.nixosModules.home-manager;
+      flake-flatpaks = flatpaks.nixosModule;
+      home-manager-extra = {
+        home-manager = {
+          extraSpecialArgs = { inherit inputs outputs; };
+        };
+      };
     };
+  };
 }
