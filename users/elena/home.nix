@@ -28,6 +28,8 @@
     fzf
     onlyoffice-desktopeditors
     p7zip
+    flameshot
+    gimp
     ];
 
   # Allow home manager to download itself if needed

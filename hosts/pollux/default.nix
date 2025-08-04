@@ -15,6 +15,7 @@ systemModules = {
   jellyfin.enable = false;
   niri.enable = false;
   nixconfig.enable = true;
+  graphics.enable = true;
   rivalcfg.enable = true;
   virt.enable = true;
 };
@@ -48,6 +49,14 @@ systemModules = {
     ciscoPacketTracer8
   ];
 
+  hardware.graphics.extraPackages = with pkgs; [
+    vulkan-loader
+    vulkan-validation-layers
+    vulkan-extension-layer
+  ];
+  programs.steam.enable = true;
+
+  hardware.nvidia.open = true;
 
   # DEFAULTS
 

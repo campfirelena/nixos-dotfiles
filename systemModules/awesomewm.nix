@@ -33,14 +33,5 @@ config = lib.mkIf config.systemModules.awesomewm.enable {
 
   xdg.portal.enable = true;
   xdg.portal.config.common.default = "*";
-
-  hardware.graphics.enable = true;
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    powerManagement.finegrained = false;
-    open = false;
-    nvidiaSettings = true;
-  };
 };
 }
