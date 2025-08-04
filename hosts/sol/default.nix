@@ -11,9 +11,9 @@
 systemModules = {
   awesomewm.enable = true;
   grocy.enable = false;
-  immich.enable = false;
+  immich.enable = true;
   jellyfin.enable = false;
-  niri.enable = false;
+  niri.enable = true;
   nixconfig.enable = true;
   rivalcfg.enable = true;
 };
@@ -22,7 +22,7 @@ systemModules = {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "pollux";
+  networking.hostName = "sol";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Australia/Perth";
@@ -44,7 +44,6 @@ systemModules = {
     curl
     nh
     home-manager
-    ciscoPacketTracer8
   ];
 
 

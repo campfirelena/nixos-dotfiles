@@ -9,7 +9,7 @@ config = lib.mkIf config.systemModules.nixconfig.enable {
   };
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = ["electron_34"];
+      permittedInsecurePackages = ["electron_34" "libxml2-2.13.8"];
   };
 
   # Garbage Collection
