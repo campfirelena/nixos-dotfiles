@@ -33,6 +33,7 @@
             value = nixpkgs.lib.nixosSystem {
               specialArgs = { inherit inputs outputs; };
               modules = [
+                home-manager.nixosModules.home-manager
                 niri.nixosModules.niri
                 (./hosts + ("/" + host)) # Uses the name that nixosConfiguration is focusing on
               ]; 
@@ -47,7 +48,7 @@
             name = "${username}@${hostName}";
             value = home-manager.lib.homeManagerConfiguration {
               inherit pkgs;
-              extraSpecialArgs = {inherit inputs outputs;};
+              extraSpecialArgs = {inherit inputs;};
               modules = [
                 nixvim.homeManagerModules.nixvim
                 ./users/${username}/home.nix

@@ -40,21 +40,21 @@
     awesome.enable = true;
     bash.enable = true;
     firefox.enable = true;
-    flatpak = {
-      enable = true;
-      packages = [
-        "flathub:app/org.vinegarhq.Sober//stable"
-        "flathub:app/org.prismlauncher.PrismLauncher//stable"
-      ];
-    };
-    fuzzel.enable = true;
+#    flatpak = {
+#      enable = false;
+#      packages = [
+#        "flathub:app/org.vinegarhq.Sober//stable"
+#        "flathub:app/org.prismlauncher.PrismLauncher//stable"
+#      ];
+#    };
+#    fuzzel.enable = true;
     kitty.enable = true;
     modman.enable = true;
-    neovim.enable = true;
-    niri.enable = true;
+#    neovim.enable = true;
+   # niri.enable = true;
     obsidian.enable = true;
-    spicetify.enable = true;
+#    spicetify.enable = true;
     steam.enable = true;
-    waybar.enable = true;
+#    waybar.enable = true;
   };
 }

@@ -11,9 +11,9 @@
 systemModules = {
   awesomewm.enable = true;
   grocy.enable = false;
-  immich.enable = true;
+  immich.enable = false;
   jellyfin.enable = false;
-  niri.enable = true;
+  niri.enable = false;
   nixconfig.enable = true;
   rivalcfg.enable = true;
 };
@@ -22,7 +22,7 @@ systemModules = {
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "sol";
+  networking.hostName = "pollux";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Australia/Perth";
