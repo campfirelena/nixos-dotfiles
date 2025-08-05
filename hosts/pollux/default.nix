@@ -60,6 +60,7 @@ systemModules = {
   programs.thunar.plugins = with pkgs.xfce; [ thunar-volman ];
   services.gvfs.enable = true;
   hardware.nvidia.open = true;
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
   # DEFAULTS
 
