@@ -8,8 +8,8 @@
       modesetting.enable = true;
       nvidiaSettings = true;
       prime = {
-        intelBusId = "PCI:0:0:2";
-        nvidiaBusId = "PCI:0:1:0";
+        intelBusId = "PCI:0:2:0";
+        nvidiaBusId = "PCI:1:0:0";
         offload.enable = true;
         offload.enableOffloadCmd = true;
       };
@@ -18,5 +18,7 @@
       "modesetting"
       "nvidia"
     ];
+    boot.initrd.kernelModules = [ "nvidia" ];
+    boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
   };
 }
