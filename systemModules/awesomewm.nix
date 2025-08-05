@@ -8,8 +8,8 @@ config = lib.mkIf config.systemModules.awesomewm.enable {
     displayManager.session = [
       {
         manage = "desktop";
-	name = "default";
-	start = ''exec awesome'';
+      	name = "default";
+	      start = ''exec awesome'';
       }
     ];
     windowManager.awesome = {

@@ -55,7 +55,10 @@ systemModules = {
     vulkan-extension-layer
   ];
   programs.steam.enable = true;
-
+  programs.xfconf.enable = true;
+  programs.thunar.enable = true;
+  programs.thunar.plugins = with pkgs.xfce; [ thunar-volman ];
+  services.gvfs.enable = true;
   hardware.nvidia.open = true;
 
   # DEFAULTS
