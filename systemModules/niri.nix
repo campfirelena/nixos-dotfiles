@@ -11,25 +11,13 @@
       mako
       swaybg
       swaylock
+      wl-clipboard
     ];
 
     #fix electron BS
     environment.variables = {
       NIXOS_OZONE_WL = 1;
       ELECTRON_OZONE_PLATFORM_HINT = "auto";
-    };
-
-    services.displayManager.ly = {
-      enable = true;
-    };
-
-    hardware.graphics.enable = true;
-    hardware.nvidia = {
-      modesetting.enable = true;
-      powerManagement.enable = false; 
-      powerManagement.finegrained = false;
-      open = false;
-      nvidiaSettings = true;
     };
   };
 }

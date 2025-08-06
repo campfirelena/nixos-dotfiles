@@ -10,10 +10,11 @@
 
 systemModules = {
   awesomewm.enable = true;
+  displayManager.enable = true;
   grocy.enable = false;
   immich.enable = false;
   jellyfin.enable = false;
-  niri.enable = false;
+  niri.enable = true;
   nixconfig.enable = true;
   graphics.enable = true;
   rivalcfg.enable = true;

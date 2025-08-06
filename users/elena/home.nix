@@ -55,7 +55,7 @@
     kitty.enable = true;
     modman.enable = true;
     neovim.enable = true;
-    #niri.enable = true;
+    niri.enable = true;
     obsidian.enable = true;
     spicetify.enable = true;
     steam.enable = true;

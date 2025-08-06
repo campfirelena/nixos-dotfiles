@@ -12,9 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix.url = "github:nix-community/stylix";
-    flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/stable-v3";
+    flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/dev";
     nixvim.url = "github:campfirelena/nixvim";
     niri.url = "github:sodiboo/niri-flake";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs = {self, nixpkgs, home-manager, spicetify-nix, stylix, flatpaks, nixvim, niri, ... }@inputs:
@@ -48,11 +49,11 @@
             name = "${username}@${hostName}";
             value = home-manager.lib.homeManagerConfiguration {
               inherit pkgs;
-              extraSpecialArgs = inputs;
+              extraSpecialArgs = inputs outputs;
               modules = [
                 nixvim.homeManagerModules.nixvim
-                flatpaks.homeModule
                 ./users/${username}/home.nix
+                flatpaks.homeModule
               ];
             };
           }) usernames
