@@ -13,9 +13,6 @@ config = lib.mkIf config.systemModules.awesomewm.enable {
       ];
     };
   };
-  environment.systemPackages = with pkgs; [
-    rofi
-  ];
 
   xdg.portal.enable = true;
   xdg.portal.config.common.default = "*";

@@ -4,10 +4,18 @@
   };
   config = lib.mkIf config.userModules.niri.enable {
     programs.niri.settings = {
+      layout = {
+        gaps = 16;
+        preset-column-widths = [
+          { proportion = 1. / 1.; }
+          { proportion = 1. / 2.; }
+        ];
+      };
       #commands to use at startup
       spawn-at-startup = [
         { command = ["systemctl" "--user" "reset-failed" "waybar.service"]; }
-        { command = ["swaybg" "--image" "~/nixos-dotfiles/assets/wallpaper1.jpg"]; }
+        { command = ["swaybg" "--image" "/home/elena/nixos-dotfiles/assets/wallpaper1.jpg"]; }
+        { command = ["xwayland-satellite" ":1"]; }
       ];
 
       #input options lol
@@ -35,14 +43,19 @@
 
       #cursor theme later?
       cursor = {
-        size = 8;
+        size = 6;
         theme = "default";
       };
 
       #animations are slow so I wanna get rid of them. Later I will speed them up
       animations.enable = false;
 
-      #everything is maximised (not split into columns) TODO
+      #window decoration are ugly
+      prefer-no-csd = true;
+
+      environment = {
+        DISPLAY = ":1";
+      };
     };
   };
 }

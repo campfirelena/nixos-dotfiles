@@ -7,11 +7,13 @@
       enable = true;
     };
 
+    programs.xwayland.enable = true;
     environment.systemPackages = with pkgs; [
       mako
       swaybg
       swaylock
       wl-clipboard
+      xwayland-satellite
     ];
 
     #fix electron BS

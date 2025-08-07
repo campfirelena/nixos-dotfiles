@@ -44,13 +44,13 @@
     awesome.enable = true;
     bash.enable = true;
     firefox.enable = true;
-    #flatpak = {
-    #  enable = true;
-    #  packages = [
-    #    "flathub:app/org.vinegarhq.Sober//stable"
-    #   "flathub:app/org.prismlauncher.PrismLauncher//stable"
-    # ];
-    #};
+    flatpak = {
+      enable = true;
+      packages = [
+        "flathub:app/org.vinegarhq.Sober//stable"
+        "flathub:app/org.prismlauncher.PrismLauncher//stable"
+     ];
+    };
     fuzzel.enable = true;
     kitty.enable = true;
     modman.enable = true;

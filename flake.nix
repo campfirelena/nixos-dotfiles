@@ -15,7 +15,6 @@
     flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/dev";
     nixvim.url = "github:campfirelena/nixvim";
     niri.url = "github:sodiboo/niri-flake";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs = {self, nixpkgs, home-manager, spicetify-nix, stylix, flatpaks, nixvim, niri, ... }@inputs:
@@ -49,12 +48,10 @@
             name = "${username}@${hostName}";
             value = home-manager.lib.homeManagerConfiguration {
               inherit pkgs;
-              extraSpecialArgs = inputs outputs;
+              extraSpecialArgs = { inherit inputs outputs; };
               modules = [
-                nixvim.homeManagerModules.nixvim
                 ./users/${username}/home.nix
-                flatpaks.homeModule
-              ];
+              ] ++ attrsets.attrValues self.homeModules;
             };
           }) usernames
         )
@@ -69,8 +66,13 @@
       home-manager-extra = {
         home-manager = {
           extraSpecialArgs = { inherit inputs outputs; };
+          sharedModules = [] ++ pkgs.lib.attrsets.attrValues self.homeModules;
         };
       };
+    };
+
+    homeModules = {
+      flake-flatpaks = flatpaks.homeModule;
     };
   };
 }
