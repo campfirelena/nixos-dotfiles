@@ -1,4 +1,4 @@
-{ config, pkgs, niri, lib, ... }:{
+{ config, pkgs, niri, lib, inputs, ... }:{
   options = {
     systemModules.niri.enable = lib.mkEnableOption "";
   };
@@ -14,6 +14,7 @@
       swaylock
       wl-clipboard
       xwayland-satellite
+      inputs.quickshell.packages.${pkgs.system}.default
     ];
 
     #fix electron BS

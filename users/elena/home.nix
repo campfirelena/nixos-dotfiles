@@ -58,7 +58,6 @@
     niri.enable = true;
     obsidian.enable = true;
     spicetify.enable = true;
-    steam.enable = true;
     waybar.enable = true;
   };
 }

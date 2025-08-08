@@ -62,6 +62,9 @@ systemModules = {
   services.gvfs.enable = true;
   hardware.nvidia.open = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  programs.wireshark.enable = true;
+  programs.wireshark.package = pkgs.wireshark;
+  programs.wireshark.usbmon.enable = true;
 
   # DEFAULTS
 
@@ -79,6 +82,7 @@ systemModules = {
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 2283 ];
   networking.firewall.allowedUDPPorts = [ 2283 ];
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
   networking.firewall.enable = true;
 
   # Only change when different iso version used
