@@ -11,7 +11,6 @@
     environment.systemPackages = with pkgs; [
       mako
       swaybg
-      swaylock
       wl-clipboard
       xwayland-satellite
       inputs.quickshell.packages.${pkgs.system}.default

@@ -1,4 +1,4 @@
-{ config, pkgs, niri, lib, ... }:{
+{ config, lib, ... }:{
   config = lib.mkIf config.userModules.niri.enable {
     programs.niri.settings = {
       binds = with config.lib.niri.actions; {
@@ -18,6 +18,7 @@
         "Mod+8".action = focus-workspace 8;
         "Mod+9".action = focus-workspace 9;
         "Mod+Shift+C".action = close-window;
+        "Mod+F".action = toggle-windowed-fullscreen;
 
         #Window interactions
         "Mod+H".action = focus-column-left;

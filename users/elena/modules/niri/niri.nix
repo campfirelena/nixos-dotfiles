@@ -1,4 +1,4 @@
-{ config, pkgs, niri, lib, ... }:{
+{ config, lib, ... }:{
   options = {
     userModules.niri.enable = lib.mkEnableOption "";
   };
@@ -10,12 +10,25 @@
           { proportion = 1. / 1.; }
           { proportion = 1. / 2.; }
         ];
+        border.enable = false;
+
+        focus-ring = {
+          enable = true;
+          width = 4;
+          active = {
+            color = "#796CB3";
+          };
+          inactive = {
+            color = "#352B54";
+          };
+        };
       };
       #commands to use at startup
       spawn-at-startup = [
         { command = ["systemctl" "--user" "reset-failed" "waybar.service"]; }
         { command = ["swaybg" "--image" "/home/elena/nixos-dotfiles/assets/wallpaper1.jpg"]; }
         { command = ["xwayland-satellite" ":1"]; }
+        { command = ["qs"]; }
       ];
 
       #input options lol
@@ -48,7 +61,7 @@
       };
 
       #animations are slow so I wanna get rid of them. Later I will speed them up
-      animations.enable = false;
+      animations.enable = true;
 
       #window decoration are ugly
       prefer-no-csd = true;

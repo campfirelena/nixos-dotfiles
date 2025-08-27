@@ -28,8 +28,8 @@
     fzf
     onlyoffice-desktopeditors
     p7zip
-    flameshot
     gimp
+    material-symbols
     ];
 
   # Allow home manager to download itself if needed
@@ -58,6 +58,5 @@
     niri.enable = true;
     obsidian.enable = true;
     spicetify.enable = true;
-    waybar.enable = true;
   };
 }

@@ -48,6 +48,7 @@ systemModules = {
     nh
     home-manager
     ciscoPacketTracer8
+    libimobiledevice
   ];
 
   hardware.graphics.extraPackages = with pkgs; [
@@ -65,6 +66,7 @@ systemModules = {
   programs.wireshark.enable = true;
   programs.wireshark.package = pkgs.wireshark;
   programs.wireshark.usbmon.enable = true;
+  qt.enable = true;
 
   # DEFAULTS
 
