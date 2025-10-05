@@ -1,17 +1,13 @@
 { pkgs, config, lib, ... }:{
-options = {
-  userModules.fuzzel.enable = lib.mkEnableOption "";
-};
-config = lib.mkIf config.userModules.fuzzel.enable {
   programs.fuzzel = {
     enable = true;
     settings = {
       main = {
         terminal = "kitty";
-        layet = "overlay";
+        layer = "overlay";
+        font = "Iosevka Comfy:size=16";
       };
       colors.background = "ffffffff";
     };
   };
-};
 }

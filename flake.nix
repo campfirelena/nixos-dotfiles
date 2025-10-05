@@ -7,11 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    stylix.url = "github:nix-community/stylix";
     flatpaks.url = "github:in-a-dil-emma/declarative-flatpak/dev";
     nixvim.url = "github:campfirelena/nixvim";
     niri.url = "github:sodiboo/niri-flake";
@@ -21,7 +16,7 @@
     };
   };
 
-  outputs = {self, nixpkgs, home-manager, spicetify-nix, stylix, flatpaks, nixvim, niri, quickshell, ... }@inputs:
+  outputs = {self, nixpkgs, home-manager, flatpaks, nixvim, niri, quickshell, ... }@inputs:
     let
       inherit (self) outputs;
       system = "x86_64-linux";

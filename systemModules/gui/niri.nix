@@ -9,7 +9,6 @@
 
     programs.xwayland.enable = true;
     environment.systemPackages = with pkgs; [
-      mako
       swaybg
       wl-clipboard
       xwayland-satellite

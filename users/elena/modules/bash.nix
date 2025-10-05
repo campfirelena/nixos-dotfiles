@@ -1,8 +1,4 @@
-{ config, lib, pkgs, ... }:{
-options = {
-  userModules.bash.enable = lib.mkEnableOption "";
-};
-config = lib.mkIf config.userModules.bash.enable {
+{ pkgs, ... }:{
   programs.bash = {
     enable = true;
     shellAliases = {
@@ -47,5 +43,4 @@ config = lib.mkIf config.userModules.bash.enable {
         enable = true;
         enableBashIntegration = true;
       };
-};
 }

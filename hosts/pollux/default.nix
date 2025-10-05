@@ -9,8 +9,8 @@
   # Selecting what root modules to run
 
 systemModules = {
-  awesomewm.enable = true;
   displayManager.enable = true;
+  displayManager.server = "Wayland";
   grocy.enable = false;
   immich.enable = false;
   jellyfin.enable = false;
@@ -18,6 +18,7 @@ systemModules = {
   nixconfig.enable = true;
   graphics.enable = true;
   rivalcfg.enable = true;
+  syncthing.enable = false;
   virt.enable = true;
 };
 
@@ -45,10 +46,8 @@ systemModules = {
   environment.systemPackages = with pkgs; [
     git
     curl
-    nh
     home-manager
-    ciscoPacketTracer8
-    libimobiledevice
+    (ciscoPacketTracer8.override { packetTracerSource = ../../assets/packettracer.deb;})
   ];
 
   hardware.graphics.extraPackages = with pkgs; [
@@ -56,6 +55,7 @@ systemModules = {
     vulkan-validation-layers
     vulkan-extension-layer
   ];
+
   programs.steam.enable = true;
   programs.xfconf.enable = true;
   programs.thunar.enable = true;
@@ -87,9 +87,7 @@ systemModules = {
   networking.firewall.trustedInterfaces = [ "virbr0" ];
   networking.firewall.enable = true;
 
-  # Only change when different iso version used
-  # This defines what kind of file structure is used
-  # in the nix store
+  # Don't change this
   system.stateVersion = "24.11";
   
 }

@@ -1,8 +1,4 @@
 { config, lib, ... }:{
-  options = {
-    userModules.niri.enable = lib.mkEnableOption "";
-  };
-  config = lib.mkIf config.userModules.niri.enable {
     programs.niri.settings = {
       layout = {
         gaps = 16;
@@ -26,7 +22,7 @@
       #commands to use at startup
       spawn-at-startup = [
         { command = ["systemctl" "--user" "reset-failed" "waybar.service"]; }
-        { command = ["swaybg" "--image" "/home/elena/nixos-dotfiles/assets/wallpaper1.jpg"]; }
+        { command = ["swaybg" "--image" "/home/elena/nixos-dotfiles/assets/wallpaper1.jpg"]; } # At some point replace this with QuickShell background thingy
         { command = ["xwayland-satellite" ":1"]; }
         { command = ["qs"]; }
       ];
@@ -61,7 +57,7 @@
       };
 
       #animations are slow so I wanna get rid of them. Later I will speed them up
-      animations.enable = true;
+      animations.enable = false;
 
       #window decoration are ugly
       prefer-no-csd = true;
@@ -70,5 +66,4 @@
         DISPLAY = ":1";
       };
     };
-  };
 }

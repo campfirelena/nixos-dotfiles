@@ -1,11 +1,12 @@
 { pkgs, hostName, lib, inputs, ... }:
 {
   imports = [
-  ] ++ (lib.filesystem.listFilesRecursive ./modules);
+    ./system-specific.nix
+  ] ++ (lib.filesystem.listFilesRecursive ./modules) ++ (lib.filesystem.listFilesRecursive ../../homeModules);
 
   home = {
     username = "elena";
-    stateVersion = "24.11";
+    stateVersion = "24.11"; # DO NOT CHANGE
     homeDirectory = "/home/elena";
   };
 
@@ -30,6 +31,11 @@
     p7zip
     gimp
     material-symbols
+    kew
+    r2modman
+    obsidian
+    inputs.nixvim.packages.${pkgs.system}.default
+    qutebrowser
     ];
 
   # Allow home manager to download itself if needed
@@ -37,13 +43,10 @@
 
   nixpkgs.config = {
     allowUnfree = true;
-    allowUnfreePredicate = _: true;
+    allowUnfreePredicate = true;
   };
 
   userModules = {
-    awesome.enable = true;
-    bash.enable = true;
-    firefox.enable = true;
     flatpak = {
       enable = true;
       packages = [
@@ -51,12 +54,9 @@
         "flathub:app/org.prismlauncher.PrismLauncher//stable"
      ];
     };
-    fuzzel.enable = true;
-    kitty.enable = true;
-    modman.enable = true;
-    neovim.enable = true;
-    niri.enable = true;
-    obsidian.enable = true;
-    spicetify.enable = true;
+    terminal = {
+      enable = true;
+      choice = "kitty";
+    };
   };
 }

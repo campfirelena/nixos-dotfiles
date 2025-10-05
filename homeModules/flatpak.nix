@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, lib, ... }:
 {
 options = {
   userModules.flatpak.enable = lib.mkEnableOption "";

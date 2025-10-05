@@ -1,8 +1,4 @@
 {lib, config, pkgs, ...}:{
-options = {
-  userModules.firefox.enable = lib.mkEnableOption "";
-};
-config = lib.mkIf config.userModules.firefox.enable {
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
@@ -12,5 +8,4 @@ config = lib.mkIf config.userModules.firefox.enable {
 #      "sidebar.verticalTabs" = true;
     };
   };
-};
 }

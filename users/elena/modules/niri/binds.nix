@@ -1,5 +1,4 @@
 { config, lib, ... }:{
-  config = lib.mkIf config.userModules.niri.enable {
     programs.niri.settings = {
       binds = with config.lib.niri.actions; {
         #basic functions
@@ -23,8 +22,8 @@
         #Window interactions
         "Mod+H".action = focus-column-left;
         "Mod+L".action = focus-column-right;
-        "Mod+J".action = focus-window-down;
-        "Mod+K".action = focus-window-up;
+        "Mod+J".action = focus-workspace-down;
+        "Mod+K".action = focus-workspace-up;
         "Mod+Ctrl+H".action = move-column-left;
         "Mod+Ctrl+L".action = move-column-right;
         "Mod+Shift+H".action = focus-monitor-left;
@@ -33,7 +32,8 @@
         "Mod+Shift+Ctrl+L".action = move-column-to-monitor-right;
         "Mod+Shift+F".action = toggle-windowed-fullscreen;
         "Mod+M".action = switch-preset-column-width;
+        "Mod+Q".action = consume-or-expel-window-left;
+        "Mod+E".action = consume-or-expel-window-right;
       };
     };
-  };
 }
