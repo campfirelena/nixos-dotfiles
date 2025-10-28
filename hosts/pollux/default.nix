@@ -47,7 +47,7 @@ systemModules = {
     git
     curl
     home-manager
-    (ciscoPacketTracer8.override { packetTracerSource = ../../assets/packettracer.deb;})
+    (ciscoPacketTracer8.override { packetTracerSource = /home/elena/nixos-dotfiles/assets/packettracer.deb;})
   ];
 
   hardware.graphics.extraPackages = with pkgs; [

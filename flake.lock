@@ -282,11 +282,11 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1759568053,
-        "narHash": "sha256-9C+b8a8aLvhHTHbWUwaNyfzw4Iot7xVzvn7LpDT2pDg=",
+        "lastModified": 1759669005,
+        "narHash": "sha256-fTNftzBby70M3ARpxp+CK+Xj6alHUyh1RymbQjxqzq0=",
         "owner": "campfirelena",
         "repo": "nixvim",
-        "rev": "6f480c3a999b30b6c12b1b3e47b3c861f1ffb7e8",
+        "rev": "6d73a03678d33cb4b00860e38c73768bab289a9c",
         "type": "github"
       },
       "original": {
