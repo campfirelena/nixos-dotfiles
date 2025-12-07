@@ -29,13 +29,10 @@
     fzf
     onlyoffice-desktopeditors
     p7zip
-    gimp
     material-symbols
     kew
     r2modman
-    obsidian
     inputs.nixvim.packages.${pkgs.system}.default
-    qutebrowser
     ];
 
   # Allow home manager to download itself if needed

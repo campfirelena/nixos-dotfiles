@@ -49,6 +49,7 @@ systemModules = {
     home-manager
     (ciscoPacketTracer8.override { packetTracerSource = /home/elena/nixos-dotfiles/assets/packettracer.deb;})
     tmux
+    stow
   ];
 
   hardware.graphics.extraPackages = with pkgs; [
